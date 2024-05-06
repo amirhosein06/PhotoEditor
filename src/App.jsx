@@ -19,6 +19,7 @@ export const GlobalStyle = createGlobalStyle `
     width: 100%;
     height: 100vh;
     font-family: 'vazirFont' !important;
+    background-color: #f5f5f5;
    }
    #root{
     width: 100%;

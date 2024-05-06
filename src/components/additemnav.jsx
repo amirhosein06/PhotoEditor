@@ -13,33 +13,41 @@ const Btns = styled.button`
     height: 70%;
     border: none;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 5px;
     font-weight: 500;
     font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+    color: #fff;
+    transition: all 1s;
+    background-color: #37BC9B;
+    box-shadow: 0px 0px 10px #e0e0e0;
+    &:active{
+        scale: 0.5;
+    }
 `;
-const ChngeBackBtn = styled(Btns)`
-
-`;
-const AddTextBtn = styled(Btns)`
-    
-`;
-const AddSticerkBtn = styled(Btns)`
-    
+const Icon = styled.i`
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const AddItemNav = () => {
     return ( 
     <AddItemContainer>
-        <AddSticerkBtn>
-            افزودن برچسب
-        </AddSticerkBtn>
-        <AddTextBtn>
-            افزودن متن
-        </AddTextBtn>
-        <ChngeBackBtn>
-        تغییر پس زمینه
-        </ChngeBackBtn>
+        <Btns><Icon className="bi bi-stickies"></Icon>
+            افـزودن بـرچـسـب
+        </Btns>
+        <Btns><Icon className="bi bi-fonts" style={{fontSize: "25px"}}></Icon>
+            افـزودن مـتـن
+        </Btns>
+        <Btns><Icon className="bi bi-back"></Icon>
+        تـغیـیـر پـس زمـیـنـه
+        </Btns>
     </AddItemContainer>
     );
 }
