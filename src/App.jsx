@@ -1,5 +1,6 @@
-import Context from './components/context/context'
+import Context from './components/context/context';
 import { createGlobalStyle } from 'styled-components';
+import { useState } from 'react';
 import MainPage from './components/mainpage';
 import vazirttf from './assets/vazir-font-v16.1.0/Vazir.ttf';
 import vazireot from './assets/vazir-font-v16.1.0/Vazir.eot';
@@ -19,7 +20,6 @@ export const GlobalStyle = createGlobalStyle `
     width: 100%;
     height: 100vh;
     font-family: 'vazirFont' !important;
-    background-color: #f5f5f5;
    }
    #root{
     width: 100%;
@@ -36,10 +36,14 @@ export const GlobalStyle = createGlobalStyle `
 
 
 function App() {
+  const [toolsSideStatus, settoolsSideStatus] = useState("background");
   return (
     <>
     <GlobalStyle />
-    <Context.Provider value={{}}>
+    <Context.Provider value={{
+      toolsSideStatus: toolsSideStatus,
+      settoolsSideStatus: settoolsSideStatus
+    }}>
       <MainPage/>
     </Context.Provider>
     </>

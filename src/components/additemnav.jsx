@@ -22,11 +22,11 @@ const Btns = styled.button`
     justify-content: center;
     gap: 10%;
     color: #fff;
-    transition: all 1s;
+    transition: all 0.1s;
     background-color: #37BC9B;
     box-shadow: 0px 0px 10px #e0e0e0;
     &:active{
-        scale: 0.5;
+        scale: 0.9;
     }
 `;
 const Icon = styled.i`
