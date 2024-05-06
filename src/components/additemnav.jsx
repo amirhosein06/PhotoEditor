@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Context from '../components/context/context';
+import { useContext } from "react";
 
 const AddItemContainer = styled.div`
     grid-column: 3/10;
@@ -37,15 +39,27 @@ const Icon = styled.i`
 `;
 
 const AddItemNav = () => {
+    const context = useContext(Context);
+
+    const createNewSticker = ()=>{
+        context.settoolsSideStatus("sticker");
+    };
+    const createNewText = ()=>{
+        context.settoolsSideStatus("text");
+    };
+    const changeBackground = ()=>{
+        context.settoolsSideStatus("background");
+    };
+
     return ( 
     <AddItemContainer>
-        <Btns><Icon className="bi bi-stickies"></Icon>
+        <Btns onClick={createNewSticker}><Icon className="bi bi-stickies"></Icon>
             افـزودن بـرچـسـب
         </Btns>
-        <Btns><Icon className="bi bi-fonts" style={{fontSize: "25px"}}></Icon>
+        <Btns onClick={createNewText}><Icon className="bi bi-fonts" style={{fontSize: "25px"}}></Icon>
             افـزودن مـتـن
         </Btns>
-        <Btns><Icon className="bi bi-back"></Icon>
+        <Btns onClick={changeBackground}><Icon className="bi bi-back"></Icon>
         تـغیـیـر پـس زمـیـنـه
         </Btns>
     </AddItemContainer>

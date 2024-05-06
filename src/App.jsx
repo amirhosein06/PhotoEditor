@@ -37,12 +37,60 @@ export const GlobalStyle = createGlobalStyle `
 
 function App() {
   const [toolsSideStatus, settoolsSideStatus] = useState("background");
+  const [backgroundData, setbackgroundData] = useState({
+    src: "",
+    filter: "",
+    backgroundColor: "",
+    width: "",
+    height: "",
+    mask: ""
+  });
+  const [itemArray, setitemArray] = useState([
+    {
+      state: "text",
+      selected: false,
+      value: "",
+      font: "",
+      color: "",
+      bold: false,
+      italic: false,
+      underlin: false,
+      delline: false,
+      rotate: "",
+      border: "",
+      shadow: "",
+      mask: "",
+      opacity: "",
+      blur: "",
+      lineHeight: "",
+      textalighn: "",
+      flip: ""
+    },
+    {
+      state: "sticker",
+      selected: false,
+      src: "",
+      rotate: "",
+      border: "",
+      mask: "",
+      shadow: "",
+      opacity: "",
+      color: "",
+      filter: "",
+      borderRadius: "",
+      blur: ""
+    }
+  ]);
   return (
     <>
     <GlobalStyle />
     <Context.Provider value={{
       toolsSideStatus: toolsSideStatus,
-      settoolsSideStatus: settoolsSideStatus
+      settoolsSideStatus: settoolsSideStatus,
+      backgroundData: backgroundData,
+      setbackgroundData: setbackgroundData,
+      itemArray: itemArray,
+      setitemArray: setitemArray
     }}>
       <MainPage/>
     </Context.Provider>
