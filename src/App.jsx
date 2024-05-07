@@ -49,7 +49,7 @@ function App() {
     {
       state: "text",
       selected: false,
-      value: "",
+      value: "سلام",
       font: "",
       color: "",
       bold: false,
@@ -69,7 +69,7 @@ function App() {
     {
       state: "sticker",
       selected: false,
-      src: "",
+      src: "https://picsum.photos/200/300",
       rotate: "",
       border: "",
       mask: "",
