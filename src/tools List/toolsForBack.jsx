@@ -8,6 +8,7 @@ const BackgroundTools = () => {
     const openHandlerBack = (targetComponent)=>{
         context.sethandleComponent(targetComponent);
     };
+    
     return ( 
     <ToolsList>
      <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.AddPhoto)}}><ToolsIcon className="bi bi-image-fill"></ToolsIcon>تـنـظـیـم تـصـویـر</ToolItem>

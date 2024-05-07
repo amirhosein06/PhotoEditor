@@ -1,18 +1,26 @@
 import { ToolsList,ToolItem,ToolsIcon } from "../components/createtools";
+import Context from '../components/context/context';
+import { useContext } from "react";
 
 const StickerTools = () => {
+    const context = useContext(Context);
+    
+    const openHandlerBack = (targetComponent)=>{
+        context.sethandleComponent(targetComponent);
+    };
+
     return ( 
     <ToolsList>
-     <ToolItem><ToolsIcon className="bi bi-arrow-repeat"></ToolsIcon>چـرخـش</ToolItem>
-     <ToolItem><ToolsIcon className="bi bi-water"></ToolsIcon>بـافـت</ToolItem>
-     <ToolItem><ToolsIcon className="bi bi-circle"></ToolsIcon>حـاشـیـه</ToolItem>
-     <ToolItem><ToolsIcon className="bi bi-shadows"></ToolsIcon>سـایـه</ToolItem>
-     <ToolItem><ToolsIcon className="bi bi-droplet-fill"></ToolsIcon>تـار کـردن</ToolItem>
-     <ToolItem><ToolsIcon className="bi bi-brightness-alt-low-fill"></ToolsIcon>شـفـافـیـت</ToolItem>
-     <ToolItem><ToolsIcon className="bi bi-transparency"></ToolsIcon>جــلـوه</ToolItem>
+     <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.StickRotater)}}><ToolsIcon className="bi bi-arrow-repeat"></ToolsIcon>چـرخـش</ToolItem>
+     <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.StickTexture)}}><ToolsIcon className="bi bi-water"></ToolsIcon>بـافـت</ToolItem>
+     <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.StickBoreder)}}><ToolsIcon className="bi bi-circle"></ToolsIcon>حـاشـیـه</ToolItem>
+     <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.StickShadow)}}><ToolsIcon className="bi bi-shadows"></ToolsIcon>سـایـه</ToolItem>
+     <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.StickBlur)}}><ToolsIcon className="bi bi-droplet-fill"></ToolsIcon>تـار کـردن</ToolItem>
+     <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.StickTransparent)}}><ToolsIcon className="bi bi-brightness-alt-low-fill"></ToolsIcon>شـفـافـیـت</ToolItem>
+     <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.StickFilter)}}><ToolsIcon className="bi bi-transparency"></ToolsIcon>جــلـوه</ToolItem>
      <ToolItem><ToolsIcon className="bi bi-clipboard-fill"></ToolsIcon>کـپـی</ToolItem>
-     <ToolItem><ToolsIcon className="bi bi-palette-fill"></ToolsIcon>رنـگ</ToolItem>
-     <ToolItem><ToolsIcon className="bi bi-app-indicator"></ToolsIcon>خـمـیـدگـی گـوشـه هـا</ToolItem>
+     <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.StickColor)}}><ToolsIcon className="bi bi-palette-fill"></ToolsIcon>رنـگ</ToolItem>
+     <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.StickBorderRadius)}}><ToolsIcon className="bi bi-app-indicator"></ToolsIcon>خـمـیـدگـی گـوشـه هـا</ToolItem>
     </ToolsList>
      );
 }
