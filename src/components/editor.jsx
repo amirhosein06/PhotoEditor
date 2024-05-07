@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const EditorBox = styled.div`
     grid-column: 3/10;
-    grid-row: 8/11;
+    grid-row: 9/11;
 `;
 
 const Editor = () => {
