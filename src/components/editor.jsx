@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Context from '../components/context/context';
+import { useContext } from "react";
 
 const EditorBox = styled.div`
     grid-column: 3/10;
@@ -6,9 +8,11 @@ const EditorBox = styled.div`
 `;
 
 const Editor = () => {
+    const context = useContext(Context);
+
     return ( 
     <EditorBox>
-        Editor
+        {context.handleComponent}
     </EditorBox>
     );
 }

@@ -6,6 +6,7 @@ import vazirttf from './assets/vazir-font-v16.1.0/Vazir.ttf';
 import vazireot from './assets/vazir-font-v16.1.0/Vazir.eot';
 import vazirwoff from './assets/vazir-font-v16.1.0/Vazir.woff';
 import vazirwoff2 from './assets/vazir-font-v16.1.0/Vazir.woff2';
+import handlerList from './components/editor handlers/handlersRepo';
 
 
 export const GlobalStyle = createGlobalStyle `
@@ -37,6 +38,8 @@ export const GlobalStyle = createGlobalStyle `
 
 function App() {
   const [toolsSideStatus, settoolsSideStatus] = useState("background");
+  const [handlerListState, sethandlerListState] = useState(handlerList);
+  const [handleComponent, sethandleComponent] = useState(handlerList.AddPhoto);
   const [backgroundData, setbackgroundData] = useState({
     src: "",
     filter: "",
@@ -90,7 +93,11 @@ function App() {
       backgroundData: backgroundData,
       setbackgroundData: setbackgroundData,
       itemArray: itemArray,
-      setitemArray: setitemArray
+      setitemArray: setitemArray,
+      handlerListState: handlerListState,
+      sethandlerListState: sethandlerListState,
+      handleComponent: handleComponent,
+      sethandleComponent: sethandleComponent
     }}>
       <MainPage/>
     </Context.Provider>
