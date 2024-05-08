@@ -84,13 +84,22 @@ function App() {
       selected: false,
       src: "https://picsum.photos/200/300",
       rotate: "",
-      border: "",
+      border: {
+        color: "#fff",
+        style: "solid",
+        width: "2"
+      },
       mask: "",
-      shadow: "",
-      opacity: "",
+      shadow: {
+        color: "",
+        width: "",
+        left: "0",
+        top: "0"
+      },
+      opacity: "1",
       color: "",
       filter: "",
-      borderRadius: "",
+      borderRadius: "100",
       blur: ""
     }
   ]);

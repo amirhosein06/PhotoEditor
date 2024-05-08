@@ -1,17 +1,31 @@
 import styled from "styled-components";
 
-const StickerContain = styled.img`
+const StickerContain = styled.span`
    position: absolute;
-   resize: both;
-  overflow: auto;
-  max-height: auto;
-  max-width: 100%;
-   min-height: 10%;
-   min-width: auto;
+   cursor: move;
+   width: 200px;
+   height: 300px;
+
+   /* dynamic style */
+   background-image: url(${props=> props.$sticSrc});
+   background-size: cover;
+   rotate: ${props=> props.$stickRotate}deg;
+   border: ${props=> props.$stickBorderWidth}px ${props=> props.$stickBorderStyle} ${props=> props.$stickBorderColor};
+   box-shadow: ${props=> props.$stickShodowLeft}px ${props=> props.$stickShodowTop}px 
+   ${props=> props.$stickShodowWidht}px ${props=> props.$stickShodowColor};
+   opacity: ${props=> props.$stickOpacity};
+   background-color: ${props=> props.$stickColor};
+   filter: ${props=> props.$stickFilter};
+   border-radius: ${props=> props.$stickRadius}px;
+   backdrop-filter: blur(${props=> props.$stickBlur}px);
 `;
 
 const Sticker = ({item}) => {
-    return ( <StickerContain src={item.src} /> );
+    return ( <StickerContain $stickRotate={item.rotate} $stickBorderWidth={item.border.width} $stickBorderStyle={item.border.style}
+        $stickBorderColor={item.border.color} $stickShodowTop={item.shadow.top} $stickShodowLeft={item.shadow.left}
+        $stickShodowWidht={item.shadow.width} $stickShodowColor={item.shadow.color} $stickOpacity={item.opacity}
+        $stickColor={item.color} $stickFilter={item.filter} $stickRadius={item.borderRadius} $stickBlur={item.blur}
+     $sticSrc={item.src} /> );
 }
  
 export default Sticker;
