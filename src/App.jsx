@@ -99,7 +99,7 @@ function App() {
       opacity: "1",
       color: "",
       filter: "",
-      borderRadius: "100",
+      borderRadius: "",
       blur: ""
     }
   ]);

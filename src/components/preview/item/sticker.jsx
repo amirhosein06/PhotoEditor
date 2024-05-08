@@ -5,6 +5,9 @@ const StickerContain = styled.span`
    cursor: move;
    width: 200px;
    height: 300px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 
    /* dynamic style */
    background-image: url(${props=> props.$sticSrc});
@@ -18,6 +21,16 @@ const StickerContain = styled.span`
    filter: ${props=> props.$stickFilter};
    border-radius: ${props=> props.$stickRadius}px;
    backdrop-filter: blur(${props=> props.$stickBlur}px);
+
+
+   /* border on  selected */
+   &::after{
+    content: '';
+    width: 200px;
+    height: 300px;
+    border: dashed 2px #858585;
+    display: ${props=> props.$stickSelected};
+   }
 `;
 
 const Sticker = ({item}) => {
@@ -25,6 +38,7 @@ const Sticker = ({item}) => {
         $stickBorderColor={item.border.color} $stickShodowTop={item.shadow.top} $stickShodowLeft={item.shadow.left}
         $stickShodowWidht={item.shadow.width} $stickShodowColor={item.shadow.color} $stickOpacity={item.opacity}
         $stickColor={item.color} $stickFilter={item.filter} $stickRadius={item.borderRadius} $stickBlur={item.blur}
+        $stickSelected={item.selected === false ? "none" : "block"}
      $sticSrc={item.src} /> );
 }
  

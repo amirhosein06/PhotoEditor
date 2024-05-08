@@ -1,12 +1,8 @@
 import styled from "styled-components";
 
 const TextContain = styled.p`
-   position: absolute;
-  /* resize: both; */
-  /* overflow: auto; */
+  position: absolute;
   width: 50%;
-  /* max-height: 100%;
-  max-width: 100%; */
   left: 0;
    &::selection{
     visibility: hidden;
@@ -34,6 +30,11 @@ const TextContain = styled.p`
    line-height: ${props=> props.$textLineHeight}px;
    text-align: ${props=> props.$textAlighn === "" ? "center" : props.$textAlighn};
    transform: rotateX(0deg) rotateY(${props=> props.$textFlip}deg) rotateZ(0deg);
+
+
+   /* border on  selected */
+   border: dashed #858585;
+   border-width: ${props=> props.$textSelected}px;
 `;
 
 const Text = ({item}) => {
@@ -44,6 +45,7 @@ const Text = ({item}) => {
     $textShadowColor={item.shadow.color} $textShadowWidth={item.shadow.width} $textShadowLeft={item.shadow.left} $textShadowTop={item.shadow.top}
     $textMask={item.mask} $textOpacity={item.opacity} $textBlur={item.blur} $textLineHeight={item.lineHeight}
     $textAlighn={item.textalighn} $textFlip={item.flip}
+    $textSelected={item.selected === false ? "0" : "2"}
     >
     {item.value}</TextContain> );
 }
