@@ -8,6 +8,11 @@ const BackgroundTools = () => {
     const openHandlerBack = (targetComponent)=>{
         context.sethandleComponent(targetComponent);
     };
+    const removeBackground = ()=>{
+        let newObject = {...context.backgroundData};
+        newObject.src = "";
+        context.setbackgroundData(newObject);
+    };
     
     return ( 
     <ToolsList>
@@ -16,7 +21,7 @@ const BackgroundTools = () => {
      <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.BackColor)}}><ToolsIcon className="bi bi-palette-fill"></ToolsIcon>رنـگ پـس زمـیـنـه</ToolItem>
      <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.BackResizing)}}><ToolsIcon className="bi bi-arrows-fullscreen"></ToolsIcon>ابـعـاد تـصـویـر</ToolItem>
      <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.BackTexture)}}><ToolsIcon className="bi bi-water"></ToolsIcon>بـافـت تـصـویـر</ToolItem>
-     <ToolItem><ToolsIcon className="bi bi-arrow-clockwise"></ToolsIcon>حـذف پـس زمـیـنـه</ToolItem>
+     <ToolItem onClick={removeBackground}><ToolsIcon className="bi bi-arrow-clockwise"></ToolsIcon>حـذف پـس زمـیـنـه</ToolItem>
     </ToolsList> 
     );
 }
