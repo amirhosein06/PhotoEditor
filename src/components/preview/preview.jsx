@@ -15,14 +15,32 @@ const BsePreview = styled.div`
     height: 450px;
     width: 450px;
     position: relative;
-    background-color: red;
+    /* background Photo */
+    background-image: url(${props=> props.$backPhoto});
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* filter */
+    filter: ${props=> props.$backFilter};
+    /* background color */
+    background-color: ${props=> props.$backColor};
+`;
+const BackMask = styled.img`
+    position: absolute;
+    left: 0;
+    z-index: 0;
+    min-width: 100%;
+    min-height: auto;
+    opacity: ${props=> props.$maskOpacity};
 `;
 const Preview = () => {
     const context = useContext(Context);
 
     return ( 
     <PreviewContainer>
-        <BsePreview>
+        <BsePreview $backPhoto={context.backgroundData.src} $backFilter={context.backgroundData.filter}
+        $backColor={context.backgroundData.backgroundColor}
+        >
+        <BackMask src={context.backgroundData.mask.src} $maskOpacity={context.backgroundData.mask.opacity}/>
         {context.itemArray.map(item=>(
             item.state === "text" ? (<Text item={item} />) :
             (<Sticker item={item} />)

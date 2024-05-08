@@ -41,12 +41,15 @@ function App() {
   const [handlerListState, sethandlerListState] = useState(handlerList);
   const [handleComponent, sethandleComponent] = useState(handlerList.AddPhoto);
   const [backgroundData, setbackgroundData] = useState({
-    src: "",
+    src: "https://picsum.photos/400/400",
     filter: "",
-    backgroundColor: "",
+    backgroundColor: "red",
     width: "",
     height: "",
-    mask: ""
+    mask: {
+      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf1g1Mgp6Xe-jzFpXaj3HC81JMyTHwcSqkSU-9rzTxGlsIhWol6Tn86EALvtCquO_kxaw&usqp=CAU",
+      opacity: "0.1"
+    }
   });
   const [itemArray, setitemArray] = useState([
     {
