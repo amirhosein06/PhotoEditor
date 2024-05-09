@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useContext } from "react";
 
 const StickerContain = styled.span`
    position: absolute;
@@ -24,17 +25,39 @@ const StickerContain = styled.span`
 
 
    /* border on  selected */
-   &::after{
+   &::before{
     content: '';
     width: 200px;
     height: 300px;
-    border: dashed 2px #858585;
+    border: dashed 2px #fff;
     display: ${props=> props.$stickSelected};
+   box-shadow:  0px 0px 1px 1px #000;
    }
 `;
 
-const Sticker = ({item}) => {
-    return ( <StickerContain $stickRotate={item.rotate} $stickBorderWidth={item.border.width} $stickBorderStyle={item.border.style}
+const Sticker = ({item,ContexBy}) => {
+  const context = useContext(ContexBy);
+  
+  const selectingStick = ()=>{
+   let newObject = [...context.itemArray];
+   newObject.forEach(itemeach=>{
+     if (itemeach === item) {
+       itemeach.selected = true;
+     }else{
+       itemeach.selected = false;
+     }
+   });
+   context.setitemArray(newObject);
+ }
+//    const StickOndraging = (e)=>{
+//     e.target.style.left += e.nativeEvent.layerX / 100 + "%";
+//     e.target.style.top += e.nativeEvent.layerY / 100 + "%";
+//      console.log(e);
+//   }
+
+
+    return ( <StickerContain onClick={selectingStick}
+       $stickRotate={item.rotate} $stickBorderWidth={item.border.width} $stickBorderStyle={item.border.style}
         $stickBorderColor={item.border.color} $stickShodowTop={item.shadow.top} $stickShodowLeft={item.shadow.left}
         $stickShodowWidht={item.shadow.width} $stickShodowColor={item.shadow.color} $stickOpacity={item.opacity}
         $stickColor={item.color} $stickFilter={item.filter} $stickRadius={item.borderRadius} $stickBlur={item.blur}

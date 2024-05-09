@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useContext } from "react";
 
 const TextContain = styled.p`
   position: absolute;
@@ -31,16 +32,35 @@ const TextContain = styled.p`
    text-align: ${props=> props.$textAlighn === "" ? "center" : props.$textAlighn};
    transform: rotateX(0deg) rotateY(${props=> props.$textFlip}deg) rotateZ(0deg);
 
-
    /* border on  selected */
-   border: dashed #858585;
+   border: dashed #fff;
    border-width: ${props=> props.$textSelected}px;
+   box-shadow:  0px 0px ${props=> props.$textSelected - 2}px 1px #000;
 `;
 
-const Text = ({item}) => {
+const Text = ({item,ContexBy}) => {
+  const context = useContext(ContexBy);
+  
+  const selectingText = ()=>{
+    let newObject = [...context.itemArray];
+    newObject.forEach(itemeach=>{
+      if (itemeach === item) {
+        itemeach.selected = true;
+      }else{
+        itemeach.selected = false;
+      }
+    });
+    context.setitemArray(newObject);
+  }
+  // const textOndraging = (e)=>{
+  //   e.target.style.left += e.nativeEvent.layerX / 100 + "%";
+  //   e.target.style.top += e.nativeEvent.layerY / 100 + "%";
+  //    console.log(e);
+  // }
 
     return ( 
-    <TextContain $textFont={item.font} $textColor={item.color} $textBold={item.bold} $textItalic={item.italic}
+    <TextContain onClick={selectingText}
+    $textFont={item.font} $textColor={item.color} $textBold={item.bold} $textItalic={item.italic}
     $textLine={item.underlin} $textRotate={item.rotate} $textBorderWidth={item.border.width} $textBorderColor={item.border.color}
     $textShadowColor={item.shadow.color} $textShadowWidth={item.shadow.width} $textShadowLeft={item.shadow.left} $textShadowTop={item.shadow.top}
     $textMask={item.mask} $textOpacity={item.opacity} $textBlur={item.blur} $textLineHeight={item.lineHeight}

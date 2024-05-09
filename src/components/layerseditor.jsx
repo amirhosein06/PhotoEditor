@@ -29,9 +29,12 @@ const Layer = styled.div`
     display: flex;
     align-items: center;
     border-radius: 3px;
-    border: 0.3px solid #cecece;
     padding: 0 2px 0 4px;
     gap: 5px;
+    border: solid;
+    /* select style */
+    border-width: ${props=>props.$selectCheck}px;
+    border-color: ${props=>props.$selectCheck === "2" ? "#3EB489" : "#cecece"};
 `;
 const ValueBox = styled.div`
     width: 50%;
@@ -71,14 +74,30 @@ const Paragraf = styled.p`
     display: flex;
     align-items: center;
     padding-right: 5px;
+    /* dynamic style */
+    font-family: ${props=>props.$textFont};
+    color: ${props=>props.$textColor};
 `;
 const LayerEditor = () => {
     const context = useContext(Context);
+
+    const selectingItem = (item)=>{
+        let newObject = [...context.itemArray];
+        newObject.forEach(itemeach=>{
+          if (itemeach === item) {
+            itemeach.selected = true;
+          }else{
+            itemeach.selected = false;
+          }
+        });
+        context.setitemArray(newObject);
+    }
+
     return ( 
     <LayerEditorContainer>
         {context.itemArray.map(item=>(
-            item.state === "text" ? (<Layer>
-                <ValueBox><Paragraf>{item.value}</Paragraf></ValueBox>
+            item.state === "text" ? (<Layer $selectCheck={item.selected === false ? "0.3" : "2"}>
+                <ValueBox onClick={()=>{selectingItem(item)}}><Paragraf $textColor={item.color} $textFont={item.font}>{item.value}</Paragraf></ValueBox>
                 <BtnBox>
                     <LayerIconTools className="bLayerIconTools bi-trash3-fill"></LayerIconTools>
                     <LayerIconTools className="bi bi-eye-slash-fill"></LayerIconTools>
@@ -86,8 +105,8 @@ const LayerEditor = () => {
                     <LayerIconTools className="bi bi-chevron-up"></LayerIconTools>
                 </BtnBox>
             </Layer>) :
-            (<Layer>
-                <ValueBox><ImgBox src={item.src} alt="img"/></ValueBox>
+            (<Layer $selectCheck={item.selected === false ? "0.3" : "2"}>
+                <ValueBox onClick={()=>{selectingItem(item)}}><ImgBox src={item.src} alt="img"/></ValueBox>
                 <BtnBox>
                     <LayerIconTools className="bi bi-trash3-fill"></LayerIconTools>
                     <LayerIconTools className="bi bi-eye-slash-fill"></LayerIconTools>

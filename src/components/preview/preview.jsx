@@ -42,8 +42,8 @@ const Preview = () => {
         >
         <BackMask src={context.backgroundData.mask.src} $maskOpacity={context.backgroundData.mask.opacity}/>
         {context.itemArray.map(item=>(
-            item.state === "text" ? (<Text item={item} />) :
-            (<Sticker item={item} />)
+            item.state === "text" ? (<Text item={item} ContexBy={Context} />) :
+            (<Sticker item={item} ContexBy={Context} />)
         ))}
         </BsePreview>
     </PreviewContainer> 
