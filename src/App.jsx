@@ -61,6 +61,8 @@ function App() {
   const [itemArray, setitemArray] = useState([
     {
       state: "text",
+      tarnslate: "",
+      visiblity: "visible",
       selected: false,
       value: "سلام",
       font: "",
@@ -88,6 +90,9 @@ function App() {
     },
     {
       state: "sticker",
+      tarnslate: "",
+      type: "imagen",
+      visiblity: "visible",
       selected: false,
       src: "https://picsum.photos/200/300",
       rotate: "",

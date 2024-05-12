@@ -92,24 +92,46 @@ const LayerEditor = () => {
         });
         context.setitemArray(newObject);
     }
+    const deletingItem = (item)=>{
+        let newObject = [...context.itemArray];
+        const filteringArray = newObject.filter(u=>u !== item);
+        context.setitemArray(filteringArray);
+    };
+    const hiddingItem = (item,e)=>{
+        let newObject = [...context.itemArray];
+        newObject.forEach(itemeach=>{
+          if (itemeach === item) {
+            if (itemeach.visiblity === "hidden") {
+                itemeach.visiblity = "visible";
+                e.target.classList.add("bi-eye-slash-fill");
+                e.target.classList.remove("bi-eye-fill");
+            }else{
+                itemeach.visiblity = "hidden";
+                e.target.classList.remove("bi-eye-slash-fill");
+                e.target.classList.add("bi-eye-fill");
+            }
+          };
+        });
+        context.setitemArray(newObject);
+    };
 
     return ( 
     <LayerEditorContainer>
-        {context.itemArray.map(item=>(
-            item.state === "text" ? (<Layer $selectCheck={item.selected === false ? "0.3" : "2"}>
+        {context.itemArray.map((item,index)=>(
+            item.state === "text" ? (<Layer key={index} $selectCheck={item.selected === false ? "0.3" : "2"}>
                 <ValueBox onClick={()=>{selectingItem(item)}}><Paragraf $textColor={item.color} $textFont={item.font}>{item.value}</Paragraf></ValueBox>
                 <BtnBox>
-                    <LayerIconTools className="bLayerIconTools bi-trash3-fill"></LayerIconTools>
-                    <LayerIconTools className="bi bi-eye-slash-fill"></LayerIconTools>
+                    <LayerIconTools  onClick={()=>{deletingItem(item)}} className="bLayerIconTools bi-trash3-fill"></LayerIconTools>
+                    <LayerIconTools  onClick={(e)=>{hiddingItem(item,e)}} className="bi bi-eye-slash-fill"></LayerIconTools>
                     <LayerIconTools className="bi bi-chevron-down"></LayerIconTools>
                     <LayerIconTools className="bi bi-chevron-up"></LayerIconTools>
                 </BtnBox>
             </Layer>) :
-            (<Layer $selectCheck={item.selected === false ? "0.3" : "2"}>
-                <ValueBox onClick={()=>{selectingItem(item)}}><ImgBox src={item.src} alt="img"/></ValueBox>
+            (<Layer key={index} $selectCheck={item.selected === false ? "0.3" : "2"}>
+                <ValueBox onClick={()=>{selectingItem(item)}}><ImgBox src={item.src} alt="شکل"/></ValueBox>
                 <BtnBox>
-                    <LayerIconTools className="bi bi-trash3-fill"></LayerIconTools>
-                    <LayerIconTools className="bi bi-eye-slash-fill"></LayerIconTools>
+                    <LayerIconTools onClick={()=>{deletingItem(item)}} className="bi bi-trash3-fill"></LayerIconTools>
+                    <LayerIconTools onClick={(e)=>{hiddingItem(item,e)}} className="bi bi-eye-slash-fill"></LayerIconTools>
                     <LayerIconTools className="bi bi-chevron-down"></LayerIconTools>
                     <LayerIconTools className="bi bi-chevron-up"></LayerIconTools>
                 </BtnBox>

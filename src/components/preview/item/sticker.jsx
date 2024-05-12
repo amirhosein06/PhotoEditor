@@ -2,7 +2,9 @@ import styled from "styled-components";
 import { useContext,useRef,useState } from "react";
 
 const StickerContain = styled.span`
-   position: relative;
+   position: absolute;
+   left: 0;
+   top: 0;
    width: 200px;
    height: 300px;
    display: flex;
@@ -21,6 +23,8 @@ const StickerContain = styled.span`
    filter: ${props=> props.$stickFilter};
    border-radius: ${props=> props.$stickRadius}px;
    backdrop-filter: blur(${props=> props.$stickBlur}px);
+   transform: ${props=> props.$stickTranslate};
+   visibility: ${props=> props.$stickvibility};
 
 
    /* border on  selected */
@@ -92,6 +96,13 @@ const mousedownhandler = (e)=>{
 }
 const stickDragingDisable = (target)=>{
   target.draggable = "false";
+  let newObject = [...context.itemArray];
+  newObject.forEach(itemeach=>{
+    if (itemeach === item) {
+      itemeach.tarnslate = stickElement.current.style.transform;
+    }
+  });
+  context.setitemArray(newObject);
 }
 
 
@@ -101,7 +112,7 @@ const stickDragingDisable = (target)=>{
         $stickShodowWidht={item.shadow.width} $stickShodowColor={item.shadow.color} $stickOpacity={item.opacity}
         $stickColor={item.color} $stickFilter={item.filter} $stickRadius={item.borderRadius} $stickBlur={item.blur}
         $stickSelected={item.selected === false ? "none" : "block"}
-     $sticSrc={item.src}>
+     $sticSrc={item.src} $stickTranslate={item.tarnslate} $stickvibility={item.visiblity}>
       <Translator  onDrag={stickDraging} onMouseDown={mousedownhandler} draggable={"false"}
       $stickSelected={item.selected === false ? "none" : "block"}>
         <IconOnItem className="bi bi-arrows-move"></IconOnItem></Translator>

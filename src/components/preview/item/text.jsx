@@ -2,8 +2,9 @@ import styled from "styled-components";
 import { useContext,useRef,useState } from "react";
 
 const TextContain = styled.div`
-   position: relative;
-   left: 0;
+   position: absolute;
+   right: 0;
+   top: 0;
    font-size: 40px;
    width: fit-content;
    /* dynamic style */
@@ -25,6 +26,8 @@ const TextContain = styled.div`
    line-height: ${props=> props.$textLineHeight}px;
    text-align: ${props=> props.$textAlighn === "" ? "center" : props.$textAlighn};
    transform: rotateX(0deg) rotateY(${props=> props.$textFlip}deg) rotateZ(0deg);
+   transform: ${props=> props.$textTranslate};
+   visibility: ${props=> props.$textvibility};
 
    /* border on  selected */
    border: dashed #fff;
@@ -40,7 +43,6 @@ const Translator = styled.button`
   left: calc(50% - 15px);
   bottom: -15px;
   border:  1px solid #333;
-/* -webkit-user-drag: none; */
   cursor: move;
   display: flex;
   align-items: center;
@@ -91,6 +93,13 @@ const Text = ({item,ContexBy}) => {
   }
   const textDragingDisable = (target)=>{
     target.draggable = "false";
+    let newObject = [...context.itemArray];
+    newObject.forEach(itemeach=>{
+      if (itemeach === item) {
+        itemeach.tarnslate = textElement.current.style.transform;
+      }
+    });
+    context.setitemArray(newObject);
   }
 
 
@@ -100,7 +109,7 @@ const Text = ({item,ContexBy}) => {
     $textLine={item.underlin} $textRotate={item.rotate} $textBorderWidth={item.border.width} $textBorderColor={item.border.color}
     $textShadowColor={item.shadow.color} $textShadowWidth={item.shadow.width} $textShadowLeft={item.shadow.left} $textShadowTop={item.shadow.top}
     $textMask={item.mask} $textOpacity={item.opacity} $textBlur={item.blur} $textLineHeight={item.lineHeight}
-    $textAlighn={item.textalighn} $textFlip={item.flip}
+    $textAlighn={item.textalighn} $textFlip={item.flip} $textTranslate={item.tarnslate} $textvibility={item.visiblity}
     $textSelected={item.selected === false ? "0" : "2"}
     >
     {item.value} <Translator onDrag={textDraging} onMouseDown={mousedownhandler} draggable={"false"} $textSelected={item.selected === false ? "0" : "2"}
