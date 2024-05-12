@@ -12,10 +12,10 @@ import handlerList from './components/editor handlers/handlersRepo';
 export const GlobalStyle = createGlobalStyle `
 @font-face {
   font-family: 'vazirFont';
-  src: url(${vazireot});
-  src: url(${vazirttf}) format('ttf'),
+  src: url(${vazirwoff2}) format('woff2');
+  src: url(${vazirwoff2}) format('woff2'),
   url(${vazirwoff}) format('woff'),
-  url(${vazirwoff2}) format('woff');
+  url(${vazirttf}) format('ttf');
 }
    body{
     width: 100%;
@@ -32,6 +32,13 @@ export const GlobalStyle = createGlobalStyle `
     padding: 0;
     box-sizing: border-box;
     font-family: 'vazirFont' !important;
+    -webkit-touch-callout: none;
+    touch-action: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
    }
 `;
 

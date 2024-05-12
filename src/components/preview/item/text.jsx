@@ -1,17 +1,11 @@
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext,useRef,useState } from "react";
 
-const TextContain = styled.p`
-  position: absolute;
-  width: 50%;
-  left: 0;
-   &::selection{
-    visibility: hidden;
-    display: none;
-   }
+const TextContain = styled.div`
+   position: relative;
+   left: 0;
    font-size: 40px;
-   cursor: move;
-
+   width: fit-content;
    /* dynamic style */
    font-family: ${props=> props.$textFont} !important;
    color: ${props=> props.$textColor};
@@ -35,12 +29,39 @@ const TextContain = styled.p`
    /* border on  selected */
    border: dashed #fff;
    border-width: ${props=> props.$textSelected}px;
-   box-shadow:  0px 0px ${props=> props.$textSelected - 2}px 1px #000;
+   box-shadow:  0px 0px ${props=> props.$textSelected - 2}px 1px #333;
+`;
+const Translator = styled.button`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  position: fixed;
+  left: calc(50% - 15px);
+  bottom: -15px;
+  border:  1px solid #333;
+/* -webkit-user-drag: none; */
+  cursor: move;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: ${props=> props.$textSelected !== "2" ? "none" : "flex"};
+`;
+const IconOnItem = styled.i`
+  font-size: 20px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Text = ({item,ContexBy}) => {
   const context = useContext(ContexBy);
-  
+  const textElement = useRef();
+  const [x, setx] = useState(0);
+  const [y, sety] = useState(0);
+  const [draged, setdraged] = useState(false);
+   
   const selectingText = ()=>{
     let newObject = [...context.itemArray];
     newObject.forEach(itemeach=>{
@@ -51,15 +72,30 @@ const Text = ({item,ContexBy}) => {
       }
     });
     context.setitemArray(newObject);
+  };
+
+  const textDraging = (e)=>{
+    if (e.clientY !== 0 || e.clientX !== 0) {
+      textElement.current.style.transform = `translate(${e.clientX - x}px, ${e.clientY - y}px)`;
+    }else{
+      textDragingDisable(e.target);
+    }
+  };
+  const mousedownhandler = (e)=>{
+    e.target.draggable = "true";
+    if (draged === false && x === 0 && y === 0) {
+      setx(e.clientX);
+      sety(e.clientY);
+      setdraged(true);
+    }
   }
-  // const textOndraging = (e)=>{
-  //   e.target.style.left += e.nativeEvent.layerX / 100 + "%";
-  //   e.target.style.top += e.nativeEvent.layerY / 100 + "%";
-  //    console.log(e);
-  // }
+  const textDragingDisable = (target)=>{
+    target.draggable = "false";
+  }
+
 
     return ( 
-    <TextContain onClick={selectingText}
+    <TextContain ref={textElement} onClick={selectingText}
     $textFont={item.font} $textColor={item.color} $textBold={item.bold} $textItalic={item.italic}
     $textLine={item.underlin} $textRotate={item.rotate} $textBorderWidth={item.border.width} $textBorderColor={item.border.color}
     $textShadowColor={item.shadow.color} $textShadowWidth={item.shadow.width} $textShadowLeft={item.shadow.left} $textShadowTop={item.shadow.top}
@@ -67,7 +103,9 @@ const Text = ({item,ContexBy}) => {
     $textAlighn={item.textalighn} $textFlip={item.flip}
     $textSelected={item.selected === false ? "0" : "2"}
     >
-    {item.value}</TextContain> );
+    {item.value} <Translator onDrag={textDraging} onMouseDown={mousedownhandler} draggable={"false"} $textSelected={item.selected === false ? "0" : "2"}
+     ><IconOnItem className="bi bi-arrows-move"></IconOnItem></Translator>
+    </TextContain> );
 }
  
 export default Text;

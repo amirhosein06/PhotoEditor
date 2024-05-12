@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext,useRef,useState } from "react";
 
 const StickerContain = styled.span`
-   position: absolute;
-   cursor: move;
+   position: relative;
    width: 200px;
    height: 300px;
    display: flex;
@@ -34,9 +33,36 @@ const StickerContain = styled.span`
    box-shadow:  0px 0px 1px 1px #000;
    }
 `;
+const Translator = styled.div`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  left:calc(50% - 15px);
+  bottom: -15px;
+  border:  1px solid #333;
+  -webkit-user-drag: element;
+  cursor: move;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: ${props=> props.$stickSelected === "block" ? "flex" : "none"};
+`;
+const IconOnItem = styled.i`
+  font-size: 20px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const Sticker = ({item,ContexBy}) => {
   const context = useContext(ContexBy);
+  const stickElement = useRef();
+  const [x, setx] = useState(0);
+  const [y, sety] = useState(0);
+  const [draged, setdraged] = useState(false);
   
   const selectingStick = ()=>{
    let newObject = [...context.itemArray];
@@ -49,20 +75,37 @@ const Sticker = ({item,ContexBy}) => {
    });
    context.setitemArray(newObject);
  }
-//    const StickOndraging = (e)=>{
-//     e.target.style.left += e.nativeEvent.layerX / 100 + "%";
-//     e.target.style.top += e.nativeEvent.layerY / 100 + "%";
-//      console.log(e);
-//   }
+ const stickDraging = (e)=>{
+  if (e.clientY !== 0 || e.clientX !== 0) {
+    stickElement.current.style.transform = `translate(${e.clientX - x}px, ${e.clientY - y}px)`;
+  }else{
+    stickDragingDisable(e.target);
+  }
+};
+const mousedownhandler = (e)=>{
+  e.target.draggable = "true";
+  if (draged === false && x === 0 && y === 0) {
+    setx(e.clientX);
+    sety(e.clientY);
+    setdraged(true);
+  }
+}
+const stickDragingDisable = (target)=>{
+  target.draggable = "false";
+}
 
 
-    return ( <StickerContain onClick={selectingStick}
+    return ( <StickerContain ref={stickElement} onClick={selectingStick}
        $stickRotate={item.rotate} $stickBorderWidth={item.border.width} $stickBorderStyle={item.border.style}
         $stickBorderColor={item.border.color} $stickShodowTop={item.shadow.top} $stickShodowLeft={item.shadow.left}
         $stickShodowWidht={item.shadow.width} $stickShodowColor={item.shadow.color} $stickOpacity={item.opacity}
         $stickColor={item.color} $stickFilter={item.filter} $stickRadius={item.borderRadius} $stickBlur={item.blur}
         $stickSelected={item.selected === false ? "none" : "block"}
-     $sticSrc={item.src} /> );
+     $sticSrc={item.src}>
+      <Translator  onDrag={stickDraging} onMouseDown={mousedownhandler} draggable={"false"}
+      $stickSelected={item.selected === false ? "none" : "block"}>
+        <IconOnItem className="bi bi-arrows-move"></IconOnItem></Translator>
+     </StickerContain> );
 }
  
 export default Sticker;

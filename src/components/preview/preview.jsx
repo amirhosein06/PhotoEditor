@@ -10,6 +10,7 @@ const PreviewContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 `;
 const BsePreview = styled.div`
     height: 450px;
@@ -31,6 +32,7 @@ const BackMask = styled.img`
     min-width: 100%;
     min-height: auto;
     opacity: ${props=> props.$maskOpacity};
+    -webkit-user-drag: none;
 `;
 const Preview = () => {
     const context = useContext(Context);
@@ -41,9 +43,9 @@ const Preview = () => {
         $backColor={context.backgroundData.backgroundColor}
         >
         <BackMask src={context.backgroundData.mask.src} $maskOpacity={context.backgroundData.mask.opacity}/>
-        {context.itemArray.map(item=>(
-            item.state === "text" ? (<Text item={item} ContexBy={Context} />) :
-            (<Sticker item={item} ContexBy={Context} />)
+        {context.itemArray.map((item,index)=>(
+            item.state === "text" ? (<Text key={index} item={item} ContexBy={Context} />) :
+            (<Sticker key={index} item={item} ContexBy={Context} />)
         ))}
         </BsePreview>
     </PreviewContainer> 
