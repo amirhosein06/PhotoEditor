@@ -149,7 +149,7 @@ const LayerEditor = () => {
             item.state === "text" ? (<Layer ref={layerElement} key={index} $LayerOrder={item.zIndex}
              $selectCheck={item.selected === false ? "0.3" : "2"}>
                 <ValueBox onClick={()=>{selectingItem(item)}}><Paragraf $textColor={item.color} $textFont={item.font}>{item.value}</Paragraf></ValueBox>
-                <BtnBox>{item.zIndex}
+                <BtnBox>
                     <LayerIconTools  onClick={()=>{deletingItem(item)}} className="bLayerIconTools bi-trash3-fill"></LayerIconTools>
                     <LayerIconTools  onClick={(e)=>{hiddingItem(item,e)}} className="bi bi-eye-slash-fill"></LayerIconTools>
                     <LayerIconTools  onClick={()=>{orderDecerement(item)}} className="bi bi-chevron-down"></LayerIconTools>
@@ -158,7 +158,7 @@ const LayerEditor = () => {
             </Layer>) :
             (<Layer ref={layerElement} key={index}  $LayerOrder={item.zIndex} $selectCheck={item.selected === false ? "0.3" : "2"}>
                 <ValueBox onClick={()=>{selectingItem(item)}}><ImgBox src={item.src} alt="شکل"/></ValueBox>
-                <BtnBox>{item.zIndex}
+                <BtnBox>
                     <LayerIconTools onClick={()=>{deletingItem(item)}} className="bi bi-trash3-fill"></LayerIconTools>
                     <LayerIconTools onClick={(e)=>{hiddingItem(item,e)}} className="bi bi-eye-slash-fill"></LayerIconTools>
                     <LayerIconTools onClick={()=>{orderDecerement(item)}} className="bi bi-chevron-down"></LayerIconTools>

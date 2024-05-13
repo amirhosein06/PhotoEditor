@@ -15,6 +15,8 @@ import StickFilter from './sticker/stickFilter';
 import StickBorderRadius from './sticker/stickRadius';
 import StickRotater from './sticker/stickRoteter';
 import StickTexture from './sticker/stickTextuer';
+import StickPosition from './sticker/stickPosition';
+import EditSize from './sticker/editSize';
 
 // for text
 import EditTextAlighn from './text/EditTextAlighn';
@@ -29,6 +31,8 @@ import TextLineHeight from './text/textLineHeight';
 import TextRotater from './text/textRoteter';
 import TextTexture from './text/textTexture';
 import TextTransparent from './text/textTransparent';
+import EditTextPosition from './text/editPosition';
+import EditFontSize from './text/editFontsize';
 
 
 const handlerList = {
@@ -47,6 +51,8 @@ const handlerList = {
   StickBorderRadius: (<StickBorderRadius/>),
   StickRotater: (<StickRotater/>),
   StickTexture: (<StickTexture/>),
+  StickPosition: (<StickPosition/>),
+  EditSize: (<EditSize/>),
   
   EditTextAlighn: (<EditTextAlighn/>),
   TextBlur: (<TextBlur/>),
@@ -59,7 +65,9 @@ const handlerList = {
   TextRotater: (<TextRotater/>),
   TextShadow: (<TextShadow/>),
   TextTexture: (<TextTexture/>),
-  TextTransparent: (<TextTransparent/>)
+  TextTransparent: (<TextTransparent/>),
+  EditTextPosition: (<EditTextPosition/>),
+  EditFontSize: (<EditFontSize/>)
 }
 
 export default handlerList;

@@ -14,6 +14,8 @@ const TextTools = () => {
      <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.TextEditor)}}><ToolsIcon className="bi bi-pencil-square"></ToolsIcon>ویـرایـش</ToolItem>
      <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.TextChangeFont)}}><ToolsIcon className="bi bi-file-earmark-font-fill"></ToolsIcon>فـونـت</ToolItem>
      <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.TextColor)}}><ToolsIcon className="bi bi-palette-fill"></ToolsIcon>رنـگ</ToolItem>
+     <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.EditTextPosition)}}><ToolsIcon className="bi bi-arrows-move"></ToolsIcon>جـابـجـایـی</ToolItem>
+     <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.EditFontSize)}}><ToolsIcon className="bi bi-arrows-angle-expand"></ToolsIcon>تـغـیـیـر انـدازه</ToolItem>
      <ToolItem><ToolsIcon className="bi bi-clipboard-fill"></ToolsIcon>کـپـی</ToolItem>
      <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.TextChangeStyle)}}><ToolsIcon className="bi bi-type-underline"></ToolsIcon>سـبـک نـوشـته</ToolItem>
      <ToolItem onClick={()=>{openHandlerBack(context.handlerListState.TextRotater)}}><ToolsIcon className="bi bi-arrow-repeat"></ToolsIcon>چـرخـش</ToolItem>
