@@ -28,6 +28,7 @@ const TextContain = styled.div`
    transform: rotateX(0deg) rotateY(${props=> props.$textFlip}deg) rotateZ(0deg);
    transform: ${props=> props.$textTranslate};
    visibility: ${props=> props.$textvibility};
+   z-index: ${props=> props.$textZindex};
 
    /* border on  selected */
    border: dashed #fff;
@@ -110,6 +111,7 @@ const Text = ({item,ContexBy}) => {
     $textShadowColor={item.shadow.color} $textShadowWidth={item.shadow.width} $textShadowLeft={item.shadow.left} $textShadowTop={item.shadow.top}
     $textMask={item.mask} $textOpacity={item.opacity} $textBlur={item.blur} $textLineHeight={item.lineHeight}
     $textAlighn={item.textalighn} $textFlip={item.flip} $textTranslate={item.tarnslate} $textvibility={item.visiblity}
+    $textZindex={item.zIndex}
     $textSelected={item.selected === false ? "0" : "2"}
     >
     {item.value} <Translator onDrag={textDraging} onMouseDown={mousedownhandler} draggable={"false"} $textSelected={item.selected === false ? "0" : "2"}

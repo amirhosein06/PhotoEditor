@@ -62,6 +62,7 @@ function App() {
     {
       state: "text",
       tarnslate: "",
+      zIndex: 1,
       visiblity: "visible",
       selected: false,
       value: "سلام",
@@ -89,8 +90,99 @@ function App() {
       flip: ""
     },
     {
+      state: "text",
+      tarnslate: "",
+      zIndex: 2,
+      visiblity: "visible",
+      selected: false,
+      value: "2سلام",
+      font: "",
+      color: "red",
+      bold: "400",
+      italic: "unset",
+      underlin: "none",
+      rotate: "0",
+      border: {
+        color: "",
+        width: ""
+      },
+      shadow: {
+        color: "",
+        width: "",
+        left: "0",
+        top: "0"
+      },
+      mask: "",
+      opacity: "",
+      blur: "",
+      lineHeight: "",
+      textalighn: "",
+      flip: ""
+    },
+    {
+      state: "text",
+      tarnslate: "",
+      zIndex: 3,
+      visiblity: "visible",
+      selected: false,
+      value: "3سلام",
+      font: "",
+      color: "red",
+      bold: "400",
+      italic: "unset",
+      underlin: "none",
+      rotate: "0",
+      border: {
+        color: "",
+        width: ""
+      },
+      shadow: {
+        color: "",
+        width: "",
+        left: "0",
+        top: "0"
+      },
+      mask: "",
+      opacity: "",
+      blur: "",
+      lineHeight: "",
+      textalighn: "",
+      flip: ""
+    },
+    {
+      state: "text",
+      tarnslate: "",
+      zIndex: 4,
+      visiblity: "visible",
+      selected: false,
+      value: "4سلام",
+      font: "",
+      color: "red",
+      bold: "400",
+      italic: "unset",
+      underlin: "none",
+      rotate: "0",
+      border: {
+        color: "",
+        width: ""
+      },
+      shadow: {
+        color: "",
+        width: "",
+        left: "0",
+        top: "0"
+      },
+      mask: "",
+      opacity: "",
+      blur: "",
+      lineHeight: "",
+      textalighn: "",
+      flip: ""
+    },
+    {
       state: "sticker",
       tarnslate: "",
+      zIndex: 5,
       type: "imagen",
       visiblity: "visible",
       selected: false,

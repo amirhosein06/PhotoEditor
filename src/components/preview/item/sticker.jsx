@@ -25,6 +25,7 @@ const StickerContain = styled.span`
    backdrop-filter: blur(${props=> props.$stickBlur}px);
    transform: ${props=> props.$stickTranslate};
    visibility: ${props=> props.$stickvibility};
+   z-index: ${props=> props.$stickZindex};
 
 
    /* border on  selected */
@@ -111,7 +112,7 @@ const stickDragingDisable = (target)=>{
         $stickBorderColor={item.border.color} $stickShodowTop={item.shadow.top} $stickShodowLeft={item.shadow.left}
         $stickShodowWidht={item.shadow.width} $stickShodowColor={item.shadow.color} $stickOpacity={item.opacity}
         $stickColor={item.color} $stickFilter={item.filter} $stickRadius={item.borderRadius} $stickBlur={item.blur}
-        $stickSelected={item.selected === false ? "none" : "block"}
+        $stickSelected={item.selected === false ? "none" : "block"} $stickZindex={item.zIndex}
      $sticSrc={item.src} $stickTranslate={item.tarnslate} $stickvibility={item.visiblity}>
       <Translator  onDrag={stickDraging} onMouseDown={mousedownhandler} draggable={"false"}
       $stickSelected={item.selected === false ? "none" : "block"}>
