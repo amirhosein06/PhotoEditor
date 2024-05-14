@@ -1,12 +1,14 @@
 import Context from './components/context/context';
 import { createGlobalStyle } from 'styled-components';
 import { useState } from 'react';
+import { Routes,Route } from 'react-router-dom';
 import MainPage from './components/mainpage';
 import vazirttf from './assets/vazir-font-v16.1.0/Vazir.ttf';
 import vazireot from './assets/vazir-font-v16.1.0/Vazir.eot';
 import vazirwoff from './assets/vazir-font-v16.1.0/Vazir.woff';
 import vazirwoff2 from './assets/vazir-font-v16.1.0/Vazir.woff2';
 import handlerList from './components/editor handlers/handlersRepo';
+import Gallry from './components/routing components/gallery';
 
 
 export const GlobalStyle = createGlobalStyle `
@@ -15,6 +17,7 @@ export const GlobalStyle = createGlobalStyle `
   src: url(${vazirwoff2}) format('woff2');
   src: url(${vazirwoff2}) format('woff2'),
   url(${vazirwoff}) format('woff'),
+  url(${vazireot}) format('eot'),
   url(${vazirttf}) format('ttf');
 }
    body{
@@ -48,7 +51,7 @@ function App() {
   const [handlerListState, sethandlerListState] = useState(handlerList);
   const [handleComponent, sethandleComponent] = useState(handlerList.AddPhoto);
   const [backgroundData, setbackgroundData] = useState({
-    src: "https://picsum.photos/400/400",
+    src: localStorage.getItem("srcOfBackground"),
     filter: "",
     backgroundColor: "red",
     width: "",
@@ -132,7 +135,11 @@ function App() {
       handleComponent: handleComponent,
       sethandleComponent: sethandleComponent
     }}>
-      <MainPage/>
+      <Routes>
+        <Route path='/gallery' Component={Gallry}/>
+        <Route path='/' Component={MainPage}/>
+        <Route path='*' Component={MainPage}/>
+      </Routes>
     </Context.Provider>
     </>
   );
