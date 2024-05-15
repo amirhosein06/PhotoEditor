@@ -1,6 +1,6 @@
 import Context from './components/context/context';
 import { createGlobalStyle } from 'styled-components';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { Routes,Route } from 'react-router-dom';
 import MainPage from './components/mainpage';
 import vazirttf from './assets/vazir-font-v16.1.0/Vazir.ttf';
@@ -50,8 +50,8 @@ function App() {
   const [toolsSideStatus, settoolsSideStatus] = useState("background");
   const [handlerListState, sethandlerListState] = useState(handlerList);
   const [handleComponent, sethandleComponent] = useState(handlerList.AddPhoto);
-  const [backgroundData, setbackgroundData] = useState({
-    src: localStorage.getItem("srcOfBackground"),
+  const [defultBack, setdefultBack] = useState({
+    src: "",
     filter: "",
     backgroundColor: "red",
     width: "",
@@ -61,7 +61,7 @@ function App() {
       opacity: "0.1"
     }
   });
-  const [itemArray, setitemArray] = useState([
+  const [defultItems, setdefultItems] = useState([
     {
       state: "text",
       tarnslate: "",
@@ -120,6 +120,32 @@ function App() {
       blur: ""
     }
   ]);
+  const [backgroundData, setbackgroundData] = useState(defultBack);
+  const [itemArray, setitemArray] = useState(defultItems);
+
+  useEffect(()=>{
+    const backData = JSON.parse(localStorage.getItem("backData"));
+    const arrayData = JSON.parse(localStorage.getItem("arrayData"));
+
+    if (itemArray == defultItems && backgroundData == defultBack) {
+      if (backData == null && arrayData == null) {
+        localStorage.clear();
+        localStorage.setItem("backData",JSON.stringify(backgroundData));
+        localStorage.setItem("arrayData",JSON.stringify(itemArray));
+        return;
+      }else{
+        setitemArray(arrayData);
+        setbackgroundData(backData);
+        return;
+      }
+    }else{
+      localStorage.clear();
+      localStorage.setItem("backData",JSON.stringify(backgroundData));
+      localStorage.setItem("arrayData",JSON.stringify(itemArray));
+      return;
+    }
+  });
+
   return (
     <>
     <GlobalStyle />

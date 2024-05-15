@@ -111,12 +111,18 @@ const Gallry = () => {
    };
    const imgSelected = (e)=>{
       localStorage.clear();
-      localStorage.setItem("srcOfBackground",e.target.src);
+      let newobject = [{...context.backgroundData}];
+      newobject[0].src = e.target.src;
+      localStorage.setItem("backData",JSON.stringify(newobject[0]));
+      localStorage.setItem("arrayData",JSON.stringify(context.itemArray));
       window.location.assign("/");
    };
    const sendInputImgTo = ()=>{
       localStorage.clear();
-      localStorage.setItem("srcOfBackground",inputValue);
+      let newobject = [{...context.backgroundData}];
+      newobject[0].src = inputValue;
+      localStorage.setItem("backData",JSON.stringify(newobject[0]));
+      localStorage.setItem("arrayData",JSON.stringify(context.itemArray));
       window.location.assign("/");
    };
 
