@@ -16,19 +16,26 @@ const BsePreview = styled.div`
     height: 450px;
     width: 450px;
     position: relative;
-    /* background Photo */
-    background-image: url(${props=> props.$backPhoto});
-    background-repeat: no-repeat;
-    background-size: cover;
     /* filter */
-    filter: ${props=> props.$backFilter};
+    &::after{
+        filter: ${props=> props.$backFilter};
+        content: '';
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        /* background Photo */
+        background-image: url(${props=> props.$backPhoto});
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+    }
     /* background color */
     background-color: ${props=> props.$backColor};
 `;
 const BackMask = styled.img`
     position: absolute;
     left: 0;
-    z-index: 0;
+    z-index: 1;
     min-width: 100%;
     min-height: auto;
     opacity: ${props=> props.$maskOpacity};

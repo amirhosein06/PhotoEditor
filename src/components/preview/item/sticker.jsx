@@ -25,7 +25,7 @@ const StickerContain = styled.span`
    backdrop-filter: blur(${props=> props.$stickBlur}px);
    transform: ${props=> props.$stickTranslate};
    visibility: ${props=> props.$stickvibility};
-   z-index: ${props=> props.$stickZindex};
+   z-index: ${props=> props.$stickZindex + 1};
 
 
    /* border on  selected */

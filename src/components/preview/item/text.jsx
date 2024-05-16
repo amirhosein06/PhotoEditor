@@ -28,7 +28,7 @@ const TextContain = styled.div`
    transform: rotateX(0deg) rotateY(${props=> props.$textFlip}deg) rotateZ(0deg);
    transform: ${props=> props.$textTranslate};
    visibility: ${props=> props.$textvibility};
-   z-index: ${props=> props.$textZindex};
+   z-index: ${props=> props.$textZindex + 1};
 
    /* border on  selected */
    border: dashed #fff;
