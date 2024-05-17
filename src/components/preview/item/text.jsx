@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useContext,useRef,useState } from "react";
+import handlerList from "../../editor handlers/handlersRepo";
 
 const TextContain = styled.div`
    position: absolute;
@@ -75,6 +76,8 @@ const Text = ({item,ContexBy}) => {
       }
     });
     context.setitemArray(newObject);
+    context.settoolsSideStatus("text");
+   context.sethandleComponent(handlerList.EditFontSize);
   };
 
   const textDraging = (e)=>{

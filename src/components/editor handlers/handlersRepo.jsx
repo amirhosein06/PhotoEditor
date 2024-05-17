@@ -17,6 +17,7 @@ import StickRotater from './sticker/stickRoteter';
 import StickTexture from './sticker/stickTextuer';
 import StickPosition from './sticker/stickPosition';
 import EditSize from './sticker/editSize';
+import CreateNewStick from './sticker/createNewStick';
 
 // for text
 import EditTextAlighn from './text/EditTextAlighn';
@@ -53,6 +54,7 @@ const handlerList = {
   StickTexture: (<StickTexture/>),
   StickPosition: (<StickPosition/>),
   EditSize: (<EditSize/>),
+  CreateNewStick: (<CreateNewStick/>),
   
   EditTextAlighn: (<EditTextAlighn/>),
   TextBlur: (<TextBlur/>),

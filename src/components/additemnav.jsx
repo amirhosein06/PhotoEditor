@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Context from '../components/context/context';
 import { useContext } from "react";
+import handlerList from "./editor handlers/handlersRepo";
 
 const AddItemContainer = styled.div`
     grid-column: 3/10;
@@ -43,12 +44,29 @@ const AddItemNav = () => {
 
     const createNewSticker = ()=>{
         context.settoolsSideStatus("sticker");
+        let newObject = [...context.itemArray];
+        newObject.forEach(itemeach=>{
+            itemeach.selected = false;
+        });
+        context.setitemArray(newObject);
+        context.sethandleComponent(handlerList.CreateNewStick);
     };
     const createNewText = ()=>{
         context.settoolsSideStatus("text");
+        let newObject = [...context.itemArray];
+        newObject.forEach(itemeach=>{
+            itemeach.selected = false;
+        });
+        context.setitemArray(newObject);
+        context.sethandleComponent(handlerList.TextEditor);
     };
     const changeBackground = ()=>{
         context.settoolsSideStatus("background");
+        let newObject = [...context.itemArray];
+        newObject.forEach(itemeach=>{
+            itemeach.selected = false;
+        });
+        context.setitemArray(newObject);
     };
 
     return ( 

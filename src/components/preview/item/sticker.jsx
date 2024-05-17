@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { useContext,useRef,useState } from "react";
+import handlerList from "../../editor handlers/handlersRepo";
+
 
 const StickerContain = styled.span`
    position: absolute;
@@ -79,6 +81,8 @@ const Sticker = ({item,ContexBy}) => {
      }
    });
    context.setitemArray(newObject);
+   context.settoolsSideStatus("sticker");
+   context.sethandleComponent(handlerList.EditSize);
  }
  const stickDraging = (e)=>{
   if (e.clientY !== 0 || e.clientX !== 0) {

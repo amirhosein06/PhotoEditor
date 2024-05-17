@@ -11,6 +11,7 @@ const BackgroundTools = () => {
     const removeBackground = ()=>{
         let newObject = {...context.backgroundData};
         newObject.src = "";
+        newObject.backgroundColor = "transparent";
         context.setbackgroundData(newObject);
     };
     
