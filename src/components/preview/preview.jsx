@@ -13,8 +13,8 @@ const PreviewContainer = styled.div`
     overflow: hidden;
 `;
 const BsePreview = styled.div`
-    height: 450px;
-    width: 450px;
+    height: ${props=> props.$backheight}px;
+    width: ${props=> props.$backwidth}px;
     position: relative;
     /* filter */
     &::after{
@@ -30,14 +30,14 @@ const BsePreview = styled.div`
         position: absolute;
     }
     /* background color */
-    background-color: ${props=> props.$backColor};
+    background: ${props=> props.$backColor};
 `;
 const BackMask = styled.img`
     position: absolute;
     left: 0;
     z-index: 1;
-    min-width: 100%;
-    min-height: auto;
+    width: 100%;
+    height: auto;
     opacity: ${props=> props.$maskOpacity};
     -webkit-user-drag: none;
 `;
@@ -47,7 +47,8 @@ const Preview = () => {
     return ( 
     <PreviewContainer>
         <BsePreview $backPhoto={context.backgroundData.src} $backFilter={context.backgroundData.filter}
-        $backColor={context.backgroundData.backgroundColor}
+        $backColor={context.backgroundData.backgroundColor} $backwidth={context.backgroundData.width}
+        $backheight={context.backgroundData.height}
         >
         <BackMask src={context.backgroundData.mask.src} $maskOpacity={context.backgroundData.mask.opacity}/>
         {context.itemArray.map((item,index)=>(

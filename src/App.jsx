@@ -53,12 +53,12 @@ function App() {
   const [defultBack, setdefultBack] = useState({
     src: "",
     filter: "",
-    backgroundColor: "red",
-    width: "",
-    height: "",
+    backgroundColor: "",
+    width: "450",
+    height: "450",
     mask: {
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf1g1Mgp6Xe-jzFpXaj3HC81JMyTHwcSqkSU-9rzTxGlsIhWol6Tn86EALvtCquO_kxaw&usqp=CAU",
-      opacity: "0.1"
+      src: "",
+      opacity: "0.5"
     }
   });
   const [defultItems, setdefultItems] = useState([

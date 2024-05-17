@@ -47,8 +47,7 @@ const Content = styled.div`
     }
   width: 100%;
   height: 90%;
-  display: flex;
-  
+
   align-items: center;
   justify-content: flex-start safe;
   gap: 5px;
@@ -94,7 +93,8 @@ const AddFilter = () => {
         <Title>
         <h3>انـتـخـاب جـلـوه</h3>
         </Title>
-        <Content>
+        <h4 style={{display: context.backgroundData.src === "" ? "block" : "none",color: "#fff",margin: "30px auto 0px auto"}}>تـصـویـری انـتـخـاب نـشـده !</h4>
+        <Content style={{display: context.backgroundData.src === "" ? "none" : "flex"}}>
         <img onClick={()=>filterHandling("")} src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTci2hMwp3HKVdRYxa4q5i_7rHPxRn1zKYjgBlHHphF9TE1camsB2csEu7AVkxVK0vErgI&usqp=CAU"}/>
          {filtersList.map((item)=>(
             <img onClick={()=>filterHandling(item)} src={context.backgroundData.src} style={{filter: item}}/>
