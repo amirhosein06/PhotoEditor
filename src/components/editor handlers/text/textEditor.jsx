@@ -26,6 +26,9 @@ const TextAreaForEdit = styled.textarea`
   outline: none;
   padding: 7px 10px;
   font-size: 20px;
+  &:focus{
+    border: 1px solid #0f5e41;
+  }
 `;
 
 const TextEditor = () => {
@@ -59,7 +62,7 @@ const TextEditor = () => {
 
     return (    
     <Container>
-      <TextAreaForEdit value={textVal} onChange={textAreaHanleChange}></TextAreaForEdit>
+      <TextAreaForEdit autoFocus="true" value={textVal} onChange={textAreaHanleChange}></TextAreaForEdit>
     </Container>
     );
 }

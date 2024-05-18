@@ -67,6 +67,7 @@ const AddItemNav = () => {
             itemeach.selected = false;
         });
         context.setitemArray(newObject);
+        context.sethandleComponent(handlerList.AddPhoto);
     };
 
     return ( 

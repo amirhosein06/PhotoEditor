@@ -2,17 +2,6 @@ import styled from "styled-components";
 import { useState,useContext,useEffect} from "react";
 import Context from "../context/context";
 
-const BlurBack = styled.div`
-   z-index: 40;
-   position: absolute;
-   top: 0;
-   width: 100%;
-   height: 100%;
-   backdrop-filter: blur(2px);
-   display: flex;
-   align-items: flex-end;
-   justify-content: center;
-`;
 const GalleryContain = styled.div`
    width: 70%;
    height: 93%;
@@ -20,6 +9,10 @@ const GalleryContain = styled.div`
    box-shadow: 0px -1px 6px #dddddd;
    border-top-right-radius: 8px;
    border-top-left-radius: 8px;
+   left: 15%;
+   bottom: 0;
+   position: absolute;
+   overflow: hidden;
 `;
 const GalleryNav = styled.div`
    width: 100%;
@@ -127,7 +120,6 @@ const Gallry = () => {
    };
 
     return ( 
-    <BlurBack>
         <GalleryContain>
            <GalleryNav>
             <input onChange={inputChangeHandle} value={inputValue} type="text" placeholder="نـشـانـی ایـنـتـرنـتـی عـکـس خـود را داریـد؟ ایـنـجـا وارد کـنـیـد"/>
@@ -136,11 +128,10 @@ const Gallry = () => {
            </GalleryNav>
            <GalleryContent onScroll={contantHandleScroll}>
             {Array(imgShowedNum).fill({}).map((i,index)=>(
-               <img onClick={imgSelected} src={`https://picsum.photos/id/${index + 10}/400/400`} alt={"image lorem picsum"} />
+               <img onClick={imgSelected} src={`https://picsum.photos/id/${index + 10}/400/400`} alt={"image by lorem picsum"} />
             ))}
            </GalleryContent>
         </GalleryContain>
-    </BlurBack>
     );
 }
  
