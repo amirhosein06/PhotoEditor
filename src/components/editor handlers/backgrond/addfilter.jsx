@@ -47,7 +47,6 @@ const Content = styled.div`
     }
   width: 100%;
   height: 90%;
-
   align-items: center;
   justify-content: flex-start safe;
   gap: 5px;
@@ -58,7 +57,6 @@ const Content = styled.div`
     height: 80px;
     cursor: pointer;
     border-radius: 3px;
-    flex: 230px;
   }
 `;
 

@@ -39,6 +39,53 @@ const Btn = styled.button`
   color: #3EB489;
   height: 40px;
 `;
+const InputRange = styled.input`
+& {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 25rem;
+  width: 100%;
+}
+&:focus {
+  outline: none;
+}
+&::-webkit-slider-runnable-track {
+  background-color: #add8e6;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+&::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -4px;
+  background-color: #808080;
+  border-radius: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
+&:focus::-webkit-slider-thumb {
+  outline: 3px solid #808080;
+  outline-offset: 0.125rem;
+}
+&::-moz-range-track {
+  background-color: #add8e6;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+&::-moz-range-thumb {
+  background-color: #808080;
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
+&:focus::-moz-range-thumb{
+  outline: 3px solid #808080;
+  outline-offset: 0.125rem;
+}  
+`;
 
 const BackTexture = () => {
     const context = useContext(Context);
@@ -71,7 +118,7 @@ const BackTexture = () => {
             <input type="file" id="fileOploder" onChange={fileCoosing} style={{display: "none"}}/>
             <div style={{width: "40%",display: "flex",flexDirection: "column"}}>
             <h5 style={{color: "#fff"}}>شـفـافـیـت:</h5>
-            <input type="range" value={rangeVal} step={0.1} min={0} max={1} onChange={backTextureOpacity} style={{cursor: "pointer"}}/>
+            <InputRange type="range" value={rangeVal} step={0.1} min={0} max={1} onChange={backTextureOpacity}/>
             </div>
             <Btn onClick={deleteFille}>حـذف بـافـت</Btn>
         </Container> 

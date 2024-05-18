@@ -67,8 +67,8 @@ const LayerIconTools = styled.i`
     }
 `;
 const ImgBox = styled.img`
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
 `;
 const Paragraf = styled.p`
     width: 100%;
@@ -78,7 +78,7 @@ const Paragraf = styled.p`
     align-items: center;
     padding-right: 5px;
     /* dynamic style */
-    font-family: ${props=>props.$textFont};
+    font-family: ${props=>props.$textFont} !important;
     color: ${props=>props.$textColor};
 `;
 const LayerEditor = () => {

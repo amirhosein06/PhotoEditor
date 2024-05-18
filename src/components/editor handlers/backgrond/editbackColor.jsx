@@ -50,7 +50,7 @@ const Content = styled.div`
   justify-content: space-between;
   gap: 2%;
   padding-top: 10px;
-  & input{
+  & input[type="color"]{
     width: 30%;
     height: 70%;
     border: none;
@@ -82,9 +82,6 @@ const GradiantContain = styled.div`
         align-items: center;
         justify-content: center;
         width: 60%;
-    }
-    & div input[type="range"]{
-        width: 100%;
     }
     & div input[type="color"]{
         width: 49%;
@@ -119,6 +116,54 @@ const GradiantContain = styled.div`
     }
 
 `;
+const InputRange = styled.input`
+& {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 25rem;
+  width: 100%;
+  margin-bottom: 10px;
+}
+&:focus {
+  outline: none;
+}
+&::-webkit-slider-runnable-track {
+  background-color: #add8e6;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+&::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -4px;
+  background-color: #808080;
+  border-radius: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
+&:focus::-webkit-slider-thumb {
+  outline: 3px solid #808080;
+  outline-offset: 0.125rem;
+}
+&::-moz-range-track {
+  background-color: #add8e6;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+&::-moz-range-thumb {
+  background-color: #808080;
+  border: none;
+  border-radius: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
+&:focus::-moz-range-thumb{
+  outline: 3px solid #808080;
+  outline-offset: 0.125rem;
+}  
+`;
 
 const BackColor = () => {
   const context = useContext(Context);
@@ -147,7 +192,7 @@ const BackColor = () => {
           <GradiantContain>
             <h5>طـیـف رنـگ:</h5>
             <div>
-            <input type="range" onChange={(e)=>{setrangeVal(e.target.value)}} value={rangeVal} min={0} max={360}/>
+            <InputRange type="range" onChange={(e)=>{setrangeVal(e.target.value)}} value={rangeVal} min={0} max={360}/>
             <span>
             <input type="color" onChange={(e)=>{setcolor1Val(e.target.value)}} value={color1Val}/>
             <input type="color" onChange={(e)=>{setcolor2Val(e.target.value)}} value={color2Val}/>

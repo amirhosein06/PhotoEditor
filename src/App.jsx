@@ -70,7 +70,7 @@ function App() {
       selected: false,
       value: "سلام",
       font: "",
-      color: "red",
+      color: "#7c5252",
       bold: "400",
       italic: "unset",
       underlin: "none",
