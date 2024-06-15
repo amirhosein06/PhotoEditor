@@ -82,7 +82,7 @@ const Text = ({item,ContexBy}) => {
 
   const textDraging = (e)=>{
     if (e.clientY !== 0 || e.clientX !== 0) {
-      textElement.current.style.transform = `translate(${e.clientX - x}px, ${e.clientY - y}px)`;
+      textElement.current.style.transform = `translate(${e.clientX - x}px,${e.clientY - y}px)`;
     }else{
       textDragingDisable(e.target);
     }
