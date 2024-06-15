@@ -3,7 +3,6 @@ import { createGlobalStyle } from 'styled-components';
 import { useState,useEffect } from 'react';
 import { Routes,Route } from 'react-router-dom';
 import MainPage from './components/mainpage';
-import vazirttf from './assets/vazir-font-v16.1.0/Vazir.ttf';
 import vazireot from './assets/vazir-font-v16.1.0/Vazir.eot';
 import vazirwoff from './assets/vazir-font-v16.1.0/Vazir.woff';
 import vazirwoff2 from './assets/vazir-font-v16.1.0/Vazir.woff2';
@@ -14,11 +13,10 @@ import Gallry from './components/routing components/gallery';
 export const GlobalStyle = createGlobalStyle `
 @font-face {
   font-family: 'vazirFont';
-  src: url(${vazirwoff2}) format('woff2');
-  src: url(${vazirwoff2}) format('woff2'),
-  url(${vazirwoff}) format('woff'),
-  url(${vazireot}) format('eot'),
-  url(${vazirttf}) format('ttf');
+  src: url(${vazirwoff2}) format('woff');
+  src: url(${vazirwoff2}) format('woff'),
+  url(${vazirwoff}) format('woff2'),
+  url(${vazireot}) format('eot');
 }
    body{
     width: 100%;
@@ -43,6 +41,9 @@ export const GlobalStyle = createGlobalStyle `
   -ms-user-select: none;
   user-select: none;
    }
+  .active{
+    border-width: 3px;
+  }
 `;
 
 
@@ -70,6 +71,7 @@ function App() {
       selected: false,
       value: "سلام",
       font: "",
+      size: 40,
       color: "#7c5252",
       bold: "400",
       italic: "unset",

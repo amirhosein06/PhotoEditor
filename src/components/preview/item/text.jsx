@@ -6,13 +6,11 @@ const TextContain = styled.div`
    position: absolute;
    right: 0;
    top: 0;
-   font-size: 40px;
    width: fit-content;
    /* dynamic style */
    font-family: ${props=> props.$textFont} !important;
    color: ${props=> props.$textColor};
    font-weight: ${props=> props.$textBold};
-   font-style: ${props=> props.$textItalic};
    font-style: ${props=> props.$textItalic};
    text-decoration: ${props=> props.$textLine};
    rotate: ${props=> props.$textRotate}deg;
@@ -30,6 +28,7 @@ const TextContain = styled.div`
    transform: ${props=> props.$textTranslate};
    visibility: ${props=> props.$textvibility};
    z-index: ${props=> props.$textZindex + 1};
+   font-size: ${props=> props.$textSize}px;
 
    /* border on  selected */
    border: dashed #fff;
@@ -114,7 +113,7 @@ const Text = ({item,ContexBy}) => {
     $textShadowColor={item.shadow.color} $textShadowWidth={item.shadow.width} $textShadowLeft={item.shadow.left} $textShadowTop={item.shadow.top}
     $textMask={item.mask} $textOpacity={item.opacity} $textBlur={item.blur} $textLineHeight={item.lineHeight}
     $textAlighn={item.textalighn} $textFlip={item.flip} $textTranslate={item.tarnslate} $textvibility={item.visiblity}
-    $textZindex={item.zIndex}
+    $textZindex={item.zIndex} $textSize={item.size}
     $textSelected={item.selected === false ? "0" : "2"}
     >
     {item.value} <Translator onDrag={textDraging} onMouseDown={mousedownhandler} draggable={"false"} $textSelected={item.selected === false ? "0" : "2"}
