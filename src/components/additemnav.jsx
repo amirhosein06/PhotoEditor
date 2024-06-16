@@ -57,6 +57,35 @@ const AddItemNav = () => {
         newObject.forEach(itemeach=>{
             itemeach.selected = false;
         });
+        newObject = [...newObject,{
+            state: "text",
+            tarnslate: "",
+            zIndex: newObject.length + 1,
+            visiblity: "visible",
+            selected: true,
+            value: "مـتـن نـمـونـه",
+            font: "",
+            size: 40,
+            color: "#727272",
+            bold: "400",
+            italic: "unset",
+            underlin: "none",
+            rotate: "0",
+            border: {
+              color: "#fff",
+              width: "0"
+            },
+            shadow: {
+              color: "#fff",
+              width: "0"
+            },
+            mask: "",
+            opacity: "1",
+            blur: "0",
+            lineHeight: "40",
+            textalighn: "center",
+            flip: "0"
+        }]
         context.setitemArray(newObject);
         context.sethandleComponent(handlerList.TextEditor);
     };

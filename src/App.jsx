@@ -64,37 +64,6 @@ function App() {
   });
   const [defultItems, setdefultItems] = useState([
     {
-      state: "text",
-      tarnslate: "",
-      zIndex: 1,
-      visiblity: "visible",
-      selected: false,
-      value: "سلام",
-      font: "",
-      size: 40,
-      color: "#7c5252",
-      bold: "400",
-      italic: "unset",
-      underlin: "none",
-      rotate: "0",
-      border: {
-        color: "",
-        width: ""
-      },
-      shadow: {
-        color: "",
-        width: "",
-        left: "0",
-        top: "0"
-      },
-      mask: "",
-      opacity: "",
-      blur: "",
-      lineHeight: "",
-      textalighn: "",
-      flip: ""
-    },
-    {
       state: "sticker",
       tarnslate: "",
       zIndex: 2,
@@ -111,9 +80,7 @@ function App() {
       mask: "",
       shadow: {
         color: "",
-        width: "",
-        left: "0",
-        top: "0"
+        width: ""
       },
       opacity: "1",
       color: "",

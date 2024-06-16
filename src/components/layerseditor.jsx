@@ -90,6 +90,11 @@ const LayerEditor = () => {
         newObject.forEach(itemeach=>{
           if (itemeach === item) {
             itemeach.selected = true;
+            if (itemeach.state === "sticker") {
+                context.settoolsSideStatus("sticker");
+            }else{
+                context.settoolsSideStatus("text");
+            }
           }else{
             itemeach.selected = false;
           }
@@ -100,6 +105,7 @@ const LayerEditor = () => {
         let newObject = [...context.itemArray];
         const filteringArray = newObject.filter(u=>u !== item);
         context.setitemArray(filteringArray);
+        context.settoolsSideStatus("background");
     };
     const hiddingItem = (item,e)=>{
         let newObject = [...context.itemArray];

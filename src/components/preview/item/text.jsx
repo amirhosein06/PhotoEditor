@@ -15,7 +15,7 @@ const TextContain = styled.div`
    text-decoration: ${props=> props.$textLine};
    rotate: ${props=> props.$textRotate}deg;
    -webkit-text-stroke: ${props=> props.$textBorderWidth}px ${props=> props.$textBorderColor};
-   text-shadow: ${props=> props.$textShadowLeft}px ${props=> props.$textShadowTop}px
+   text-shadow: 0px 0px
     ${props=> props.$textShadowWidth}px ${props=> props.$textShadowColor};
     background: url(${props=> props.$textMask}) no-repeat;
    background-clip: text;
@@ -49,13 +49,21 @@ const Translator = styled.button`
   align-items: center;
   justify-content: center;
   display: ${props=> props.$textSelected !== "2" ? "none" : "flex"};
+  -webkit-text-stroke: unset !important;
+  -webkit-text-stroke-width: 0px !important;
+  opacity: 1 !important;
+  filter: none !important;
 `;
 const IconOnItem = styled.i`
   font-size: 20px;
-  color: #333;
+  color: #333 !important;
   display: flex;
   align-items: center;
   justify-content: center;
+  -webkit-text-stroke: unset !important;
+  -webkit-text-stroke-width: 0px !important;
+  opacity: 1 !important;
+  filter: none !important;
 `;
 
 const Text = ({item,ContexBy}) => {
@@ -110,7 +118,7 @@ const Text = ({item,ContexBy}) => {
     <TextContain ref={textElement} onClick={selectingText}
     $textFont={item.font} $textColor={item.color} $textBold={item.bold} $textItalic={item.italic}
     $textLine={item.underlin} $textRotate={item.rotate} $textBorderWidth={item.border.width} $textBorderColor={item.border.color}
-    $textShadowColor={item.shadow.color} $textShadowWidth={item.shadow.width} $textShadowLeft={item.shadow.left} $textShadowTop={item.shadow.top}
+    $textShadowColor={item.shadow.color} $textShadowWidth={item.shadow.width}
     $textMask={item.mask} $textOpacity={item.opacity} $textBlur={item.blur} $textLineHeight={item.lineHeight}
     $textAlighn={item.textalighn} $textFlip={item.flip} $textTranslate={item.tarnslate} $textvibility={item.visiblity}
     $textZindex={item.zIndex} $textSize={item.size}
