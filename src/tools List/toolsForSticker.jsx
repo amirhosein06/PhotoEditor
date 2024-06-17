@@ -16,7 +16,7 @@ const StickerTools = () => {
 
     return ( 
     <ToolsList id="toolsListstic">
-     <ToolItem onClick={(e)=>{openHandlerBack(context.handlerListState.EditSize,e)}}><ToolsIcon className="bi bi-arrows-angle-expand"></ToolsIcon>تـغـیـیـر انـدازه</ToolItem>
+     <ToolItem className="active" onClick={(e)=>{openHandlerBack(context.handlerListState.EditSize,e)}}><ToolsIcon className="bi bi-arrows-angle-expand"></ToolsIcon>تـغـیـیـر انـدازه</ToolItem>
      <ToolItem onClick={(e)=>{openHandlerBack(context.handlerListState.StickPosition,e)}}><ToolsIcon className="bi bi-arrows-move"></ToolsIcon>جـابـجـایـی</ToolItem>
      <ToolItem onClick={(e)=>{openHandlerBack(context.handlerListState.StickRotater,e)}}><ToolsIcon className="bi bi-arrow-repeat"></ToolsIcon>چـرخـش</ToolItem>
      <ToolItem onClick={(e)=>{openHandlerBack(context.handlerListState.StickTexture,e)}}><ToolsIcon className="bi bi-water"></ToolsIcon>بـافـت</ToolItem>

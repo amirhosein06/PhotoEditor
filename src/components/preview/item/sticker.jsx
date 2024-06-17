@@ -7,19 +7,20 @@ const StickerContain = styled.span`
    position: absolute;
    left: 0;
    top: 0;
-   width: 200px;
-   height: 300px;
    display: flex;
    align-items: center;
    justify-content: center;
 
    /* dynamic style */
+   width: ${props=> props.$sticWidth}px;
+   height: ${props=> props.$sticHeight}px;
    background-image: url(${props=> props.$sticSrc});
-   background-size: cover;
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
    rotate: ${props=> props.$stickRotate}deg;
    border: ${props=> props.$stickBorderWidth}px ${props=> props.$stickBorderStyle} ${props=> props.$stickBorderColor};
-   box-shadow: ${props=> props.$stickShodowLeft}px ${props=> props.$stickShodowTop}px 
-   ${props=> props.$stickShodowWidht}px ${props=> props.$stickShodowColor};
+   box-shadow: 0px 0px ${props=> props.$stickShodowWidht}px ${props=> props.$stickShodowColor};
    opacity: ${props=> props.$stickOpacity};
    background-color: ${props=> props.$stickColor};
    filter: ${props=> props.$stickFilter};
@@ -33,8 +34,8 @@ const StickerContain = styled.span`
    /* border on  selected */
    &::before{
     content: '';
-    width: 200px;
-    height: 300px;
+    width: ${props=> props.$sticWidth}px;
+    height: ${props=> props.$sticHeight}px;
     border: dashed 2px #fff;
     display: ${props=> props.$stickSelected};
    box-shadow:  0px 0px 1px 1px #000;
@@ -113,7 +114,7 @@ const stickDragingDisable = (target)=>{
 
     return ( <StickerContain ref={stickElement} onClick={selectingStick}
        $stickRotate={item.rotate} $stickBorderWidth={item.border.width} $stickBorderStyle={item.border.style}
-        $stickBorderColor={item.border.color} $stickShodowTop={item.shadow.top} $stickShodowLeft={item.shadow.left}
+        $stickBorderColor={item.border.color} $sticWidth={item.width} $sticHeight={item.height}
         $stickShodowWidht={item.shadow.width} $stickShodowColor={item.shadow.color} $stickOpacity={item.opacity}
         $stickColor={item.color} $stickFilter={item.filter} $stickRadius={item.borderRadius} $stickBlur={item.blur}
         $stickSelected={item.selected === false ? "none" : "block"} $stickZindex={item.zIndex}

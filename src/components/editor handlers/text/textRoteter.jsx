@@ -15,6 +15,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 const InputRange = styled.input`
 & {
@@ -64,6 +65,29 @@ const InputRange = styled.input`
   outline-offset: 0.125rem;
 }  
 `;
+const Title = styled.div`
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3%;
+  position: absolute;
+  top: 0;
+  width: 97%;
+  height: 40%;
+  & h3{
+    font-weight: 500;
+    width: fit-content;
+    flex: 1;
+  }
+  &::after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    flex: 2;
+    background-color: #fff;
+  }
+`;
 
 const TextRotater = () => {
     const context = useContext(Context);
@@ -90,6 +114,7 @@ const TextRotater = () => {
 
     return ( 
         <Container>
+          <Title>چـرخـش مـتـن</Title>
         <InputRange type="range" onChange={changeFontRotate} defaultValue={inputDefultVal()} min={0} max={360}/>
         </Container>
      );

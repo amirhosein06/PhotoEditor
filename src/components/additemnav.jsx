@@ -43,7 +43,6 @@ const AddItemNav = () => {
     const context = useContext(Context);
 
     const createNewSticker = ()=>{
-        context.settoolsSideStatus("sticker");
         let newObject = [...context.itemArray];
         newObject.forEach(itemeach=>{
             itemeach.selected = false;
@@ -59,7 +58,7 @@ const AddItemNav = () => {
         });
         newObject = [...newObject,{
             state: "text",
-            tarnslate: "",
+            tarnslate: "translate(0px,0px)",
             zIndex: newObject.length + 1,
             visiblity: "visible",
             selected: true,

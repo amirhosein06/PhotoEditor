@@ -62,7 +62,7 @@ const TextEditor = () => {
 
     return (    
     <Container>
-      <TextAreaForEdit autoFocus="true" value={textVal} onChange={textAreaHanleChange}></TextAreaForEdit>
+      <TextAreaForEdit autoFocus={true} value={textVal} onChange={textAreaHanleChange}></TextAreaForEdit>
     </Container>
     );
 }

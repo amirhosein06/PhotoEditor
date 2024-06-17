@@ -65,8 +65,10 @@ function App() {
   const [defultItems, setdefultItems] = useState([
     {
       state: "sticker",
-      tarnslate: "",
-      zIndex: 2,
+      width: "200",
+      height: "200",
+      tarnslate: "translate(0px,0px)",
+      zIndex: 1,
       type: "imagen",
       visiblity: "visible",
       selected: false,
@@ -83,7 +85,7 @@ function App() {
         width: ""
       },
       opacity: "1",
-      color: "",
+      color: "#fff",
       filter: "",
       borderRadius: "",
       blur: ""
