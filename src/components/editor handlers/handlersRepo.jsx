@@ -14,7 +14,6 @@ import StickColor from './sticker/stickColor';
 import StickFilter from './sticker/stickFilter';
 import StickBorderRadius from './sticker/stickRadius';
 import StickRotater from './sticker/stickRoteter';
-import StickTexture from './sticker/stickTextuer';
 import StickPosition from './sticker/stickPosition';
 import EditSize from './sticker/editSize';
 import CreateNewStick from './sticker/createNewStick';
@@ -51,7 +50,6 @@ const handlerList = {
   StickFilter: (<StickFilter/>),
   StickBorderRadius: (<StickBorderRadius/>),
   StickRotater: (<StickRotater/>),
-  StickTexture: (<StickTexture/>),
   StickPosition: (<StickPosition/>),
   EditSize: (<EditSize/>),
   CreateNewStick: (<CreateNewStick/>),

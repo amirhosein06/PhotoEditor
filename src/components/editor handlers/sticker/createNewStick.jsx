@@ -67,6 +67,7 @@ const CreateNewStick = () => {
         state: "sticker",
         width: "200",
         height: "200",
+        scale: "1",
         tarnslate: "translate(0px,0px)",
         zIndex: newObject.length + 1,
         type: "imagen",
@@ -76,10 +77,9 @@ const CreateNewStick = () => {
         rotate: "",
         border: {
           color: "",
-          style: "",
+          style: "solid",
           width: ""
         },
-        mask: "",
         shadow: {
           color: "",
           width: ""
@@ -103,6 +103,7 @@ const addCircle = ()=>{
         state: "sticker",
         width: "200",
         height: "200",
+        scale: "1",
         tarnslate: "translate(0px,0px)",
         zIndex: newObject.length + 1,
         type: "circle",
@@ -112,10 +113,9 @@ const addCircle = ()=>{
         rotate: "",
         border: {
           color: "",
-          style: "",
+          style: "solid",
           width: ""
         },
-        mask: "",
         shadow: {
           color: "",
           width: ""
@@ -139,6 +139,7 @@ const addSquare = ()=>{
         state: "sticker",
         width: "200",
         height: "200",
+        scale: "1",
         tarnslate: "translate(0px,0px)",
         zIndex: newObject.length + 1,
         type: "square",
@@ -148,10 +149,9 @@ const addSquare = ()=>{
         rotate: "",
         border: {
           color: "",
-          style: "",
+          style: "solid",
           width: ""
         },
-        mask: "",
         shadow: {
           color: "",
           width: ""
@@ -175,6 +175,7 @@ const addRectangle = ()=>{
         state: "sticker",
         width: "200",
         height: "100",
+        scale: "1",
         tarnslate: "translate(0px,0px)",
         zIndex: newObject.length + 1,
         type: "rectangle",
@@ -184,10 +185,9 @@ const addRectangle = ()=>{
         rotate: "",
         border: {
           color: "",
-          style: "",
+          style: "solid",
           width: ""
         },
-        mask: "",
         shadow: {
           color: "",
           width: ""

@@ -14,6 +14,7 @@ const StickerContain = styled.span`
    /* dynamic style */
    width: ${props=> props.$sticWidth}px;
    height: ${props=> props.$sticHeight}px;
+   scale: ${props=> props.$sticScale};
    background-image: url(${props=> props.$sticSrc});
    background-size: contain;
    background-repeat: no-repeat;
@@ -114,7 +115,7 @@ const stickDragingDisable = (target)=>{
 
     return ( <StickerContain ref={stickElement} onClick={selectingStick}
        $stickRotate={item.rotate} $stickBorderWidth={item.border.width} $stickBorderStyle={item.border.style}
-        $stickBorderColor={item.border.color} $sticWidth={item.width} $sticHeight={item.height}
+        $stickBorderColor={item.border.color} $sticWidth={item.width} $sticHeight={item.height} $sticScale={item.scale}
         $stickShodowWidht={item.shadow.width} $stickShodowColor={item.shadow.color} $stickOpacity={item.opacity}
         $stickColor={item.color} $stickFilter={item.filter} $stickRadius={item.borderRadius} $stickBlur={item.blur}
         $stickSelected={item.selected === false ? "none" : "block"} $stickZindex={item.zIndex}

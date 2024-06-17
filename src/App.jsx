@@ -67,6 +67,7 @@ function App() {
       state: "sticker",
       width: "200",
       height: "200",
+      scale: "1",
       tarnslate: "translate(0px,0px)",
       zIndex: 1,
       type: "imagen",
@@ -79,7 +80,6 @@ function App() {
         style: "solid",
         width: "2"
       },
-      mask: "",
       shadow: {
         color: "",
         width: ""
