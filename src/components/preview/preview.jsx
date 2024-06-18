@@ -16,6 +16,7 @@ const BsePreview = styled.div`
     height: ${props=> props.$backheight}px;
     width: ${props=> props.$backwidth}px;
     position: relative;
+    border: 1px solid #37BC9B;
     /* filter */
     &::after{
         filter: ${props=> props.$backFilter};

@@ -8,6 +8,7 @@ import vazirwoff from './assets/vazir-font-v16.1.0/Vazir.woff';
 import vazirwoff2 from './assets/vazir-font-v16.1.0/Vazir.woff2';
 import handlerList from './components/editor handlers/handlersRepo';
 import Gallry from './components/routing components/gallery';
+import About from './components/routing components/about';
 
 
 export const GlobalStyle = createGlobalStyle `
@@ -62,35 +63,7 @@ function App() {
       opacity: "0.5"
     }
   });
-  const [defultItems, setdefultItems] = useState([
-    {
-      state: "sticker",
-      width: "200",
-      height: "200",
-      scale: "1",
-      tarnslate: "translate(0px,0px)",
-      zIndex: 1,
-      type: "imagen",
-      visiblity: "visible",
-      selected: false,
-      src: "https://picsum.photos/200/300",
-      rotate: "",
-      border: {
-        color: "#fff",
-        style: "solid",
-        width: "2"
-      },
-      shadow: {
-        color: "",
-        width: ""
-      },
-      opacity: "1",
-      color: "#fff",
-      filter: "",
-      borderRadius: "",
-      blur: ""
-    }
-  ]);
+  const [defultItems, setdefultItems] = useState([]);
   const [backgroundData, setbackgroundData] = useState(defultBack);
   const [itemArray, setitemArray] = useState(defultItems);
 
@@ -134,6 +107,7 @@ function App() {
     }}>
       <Routes>
         <Route path='/gallery' Component={Gallry}/>
+        <Route path='/about' Component={About}/>
         <Route path='/' Component={MainPage}/>
         <Route path='*' Component={MainPage}/>
       </Routes>

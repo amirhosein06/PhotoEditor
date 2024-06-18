@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Context from '../components/context/context';
 import { useContext,useRef } from "react";
+import handlerList from "./editor handlers/handlersRepo";
 
 const LayerEditorContainer = styled.div`
     grid-column: 1/3;
@@ -106,6 +107,7 @@ const LayerEditor = () => {
         const filteringArray = newObject.filter(u=>u !== item);
         context.setitemArray(filteringArray);
         context.settoolsSideStatus("background");
+        context.sethandleComponent(handlerList.AddPhoto);
     };
     const hiddingItem = (item,e)=>{
         let newObject = [...context.itemArray];
@@ -163,7 +165,8 @@ const LayerEditor = () => {
                 </BtnBox>
             </Layer>) :
             (<Layer ref={layerElement} key={index}  $LayerOrder={item.zIndex} $selectCheck={item.selected === false ? "0.3" : "2"}>
-                <ValueBox onClick={()=>{selectingItem(item)}}><ImgBox src={item.src} alt="شکل"/></ValueBox>
+                <ValueBox onClick={()=>{selectingItem(item)}}><ImgBox src={item.src}
+                 alt={item.type === "square" ? "مـربـع" :  item.type === "rectangle" ? "مـسـتـطـیـل" : item.type === "circle" ? "دایـره" : "بـرچـسـب"}/></ValueBox>
                 <BtnBox>
                     <LayerIconTools onClick={()=>{deletingItem(item)}} className="bi bi-trash3-fill"></LayerIconTools>
                     <LayerIconTools onClick={(e)=>{hiddingItem(item,e)}} className="bi bi-eye-slash-fill"></LayerIconTools>
