@@ -10,9 +10,14 @@ const AddItemContainer = styled.div`
     align-items: center;
     justify-content: center;
     gap: 2%;
+    //for tablet
+    @media screen and (max-width: 1050px) {
+       grid-column: 1/13;
+       grid-row: 2/3;
+    }
 `;
 const Btns = styled.button`
-    width: 28%;
+    width: 30%;
     height: 70%;
     border: none;
     cursor: pointer;
@@ -28,6 +33,13 @@ const Btns = styled.button`
     transition: all 0.1s;
     background-color: #37BC9B;
     box-shadow: 0px 0px 10px #e0e0e0;
+    //for tablet
+    @media screen and (max-width: 1050px) {
+       grid-column: 1/13;
+       grid-row: 2/3;
+       font-size: 1.5em;
+       height: 90%;
+    }
     &:active{
         scale: 0.9;
     }
@@ -37,6 +49,17 @@ const Icon = styled.i`
     display: flex;
     align-items: center;
     justify-content: center;
+    //for tablet
+    @media screen and (max-width: 1050px) {
+       font-size: 25px;
+    }
+`;
+const Icontext = styled(Icon)`
+    font-size: 25px !important;
+    //for tablet
+    @media screen and (max-width: 1050px) {
+        font-size: 33px !important;
+    }
 `;
 
 const AddItemNav = () => {
@@ -103,7 +126,7 @@ const AddItemNav = () => {
         <Btns onClick={createNewSticker}><Icon className="bi bi-stickies"></Icon>
             افـزودن بـرچـسـب
         </Btns>
-        <Btns onClick={createNewText}><Icon className="bi bi-fonts" style={{fontSize: "25px"}}></Icon>
+        <Btns onClick={createNewText}><Icontext className="bi bi-fonts"></Icontext>
             افـزودن مـتـن
         </Btns>
         <Btns onClick={changeBackground}><Icon className="bi bi-back"></Icon>

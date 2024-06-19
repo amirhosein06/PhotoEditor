@@ -24,6 +24,12 @@ const LayerEditorContainer = styled.div`
         background: #37BC9B;
         border-radius: 10px;
     }
+    //for tablet
+    @media screen and (max-width: 1050px) {
+        grid-column: unset;
+        grid-row: unset;
+        display: none;
+    }
 `;
 const Layer = styled.div`
     width: 90%;

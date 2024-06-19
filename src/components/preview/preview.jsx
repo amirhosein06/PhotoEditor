@@ -11,6 +11,11 @@ const PreviewContainer = styled.div`
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    //for tablet
+    @media screen and (max-width: 1050px) {
+        grid-column: 1/14;
+        grid-row: 3/11;
+    }
 `;
 const BsePreview = styled.div`
     height: ${props=> props.$backheight}px;

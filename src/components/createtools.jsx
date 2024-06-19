@@ -20,6 +20,14 @@ const ToolsContainer = styled.div`
         background: #37BC9B;
         border-radius: 10px;
     }
+    //for tablet
+    @media screen and (max-width: 1050px) {
+        grid-column: 1/14;
+        grid-row: 11/12;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        border-top: none;
+    }
 `;
 
 // style for child component
@@ -30,6 +38,13 @@ export const ToolsList = styled.div`
     justify-content: center;
     padding: 3% 0 6% 0;
     flex-direction: column;
+    //for tablet
+    @media screen and (max-width: 1050px) {
+        flex-direction: row;
+        padding: 0 2%;
+        height: 100%;
+        gap: 10px;
+    }
 `;
 export const ToolItem = styled.div`
     width: 90%;
@@ -48,12 +63,26 @@ export const ToolItem = styled.div`
     &:active{
         border: 3px solid #48CFAD;
     }
+    //for tablet
+    @media screen and (max-width: 1050px) {
+        width: 140px !important;
+        height: 100% !important;
+        margin: 0;
+        padding: 0 2px;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+    }
 `;
 export const ToolsIcon = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.3em;
+    //for tablet
+    @media screen and (max-width: 1050px) {
+        font-size: 1.7em;
+    }
 `;
 
 const CreateTools = () => {
