@@ -110,15 +110,16 @@ const AboutLink = styled.a`
 
 const MainPage = () => {
     const context = useContext(Context);
-
+    var tablet = window.matchMedia("(max-width: 1050px)");
+    
     const createNewProject = ()=>{
         // یادم باشه alert
         context.setbackgroundData({
             src: "",
             filter: "",
             backgroundColor: "",
-            width: "450",
-            height: "450",
+            width: tablet.matches ? "622" : "450",
+            height: tablet.matches ? "622" : "450",
             mask: {
               src: "",
               opacity: "0.5"

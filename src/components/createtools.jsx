@@ -24,8 +24,7 @@ const ToolsContainer = styled.div`
     @media screen and (max-width: 1050px) {
         grid-column: 1/14;
         grid-row: 11/12;
-        overflow-y: hidden;
-        overflow-x: scroll;
+        overflow: hidden;
         border-top: none;
     }
 `;
@@ -44,6 +43,20 @@ export const ToolsList = styled.div`
         padding: 0 2%;
         height: 100%;
         gap: 10px;
+        justify-content: flex-start;
+        overflow: scroll hidden;
+        padding-bottom: 10px;
+    &::-webkit-scrollbar{
+        width: 7px;
+        height: 10px;
+    }
+    &::-webkit-scrollbar-track{
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb{
+        background: #37BC9B;
+        border-radius: 10px;
+    }
     }
 `;
 export const ToolItem = styled.div`
@@ -65,6 +78,7 @@ export const ToolItem = styled.div`
     }
     //for tablet
     @media screen and (max-width: 1050px) {
+        min-width: 140px !important;
         width: 140px !important;
         height: 100% !important;
         margin: 0;

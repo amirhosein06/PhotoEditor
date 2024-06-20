@@ -52,12 +52,13 @@ function App() {
   const [toolsSideStatus, settoolsSideStatus] = useState("background");
   const [handlerListState, sethandlerListState] = useState(handlerList);
   const [handleComponent, sethandleComponent] = useState(handlerList.AddPhoto);
+  var tablet = window.matchMedia("(max-width: 1050px)");
   const [defultBack, setdefultBack] = useState({
     src: "",
     filter: "",
     backgroundColor: "",
-    width: "450",
-    height: "450",
+    width: tablet.matches ? "622" : "450",
+    height: tablet.matches ? "622" : "450",
     mask: {
       src: "",
       opacity: "0.5"

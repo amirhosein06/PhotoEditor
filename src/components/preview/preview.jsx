@@ -15,11 +15,15 @@ const PreviewContainer = styled.div`
     @media screen and (max-width: 1050px) {
         grid-column: 1/14;
         grid-row: 3/11;
+        align-items: flex-start;
+        padding-top: 5px;
     }
 `;
 const BsePreview = styled.div`
-    height: ${props=> props.$backheight}px;
-    width: ${props=> props.$backwidth}px;
+    width: ${props=> props.$backheight}px !important;
+    height: ${props=> props.$backwidth}px !important;
+    min-width: ${props=> props.$backheight}px !important;
+    min-height: ${props=> props.$backwidth}px !important;
     position: relative;
     border: 1px solid #37BC9B;
     /* filter */

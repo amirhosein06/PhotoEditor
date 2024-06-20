@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Context from '../components/context/context';
-import { useContext,useRef } from "react";
+import { useContext,useRef,useState } from "react";
 import handlerList from "./editor handlers/handlersRepo";
 
 const LayerEditorContainer = styled.div`
@@ -28,7 +28,16 @@ const LayerEditorContainer = styled.div`
     @media screen and (max-width: 1050px) {
         grid-column: unset;
         grid-row: unset;
-        display: none;
+        display: ${props=> props.$showinglayer};
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 60%;
+        height: 100%;
+        background-color: #fff;
+        z-index: 10;
+        box-shadow: 0px 0px 8px #37bc9b6a;
+        border: none;
     }
 `;
 const Layer = styled.div`
@@ -45,6 +54,11 @@ const Layer = styled.div`
     border-width: ${props=>props.$selectCheck}px;
     border-color: ${props=>props.$selectCheck === "2" ? "#3EB489" : "#cecece"};
     order: ${props=>props.$LayerOrder};
+    //for tablet
+    @media screen and (max-width: 1050px) {
+         width: 97%;
+         height: 80px;
+    }
 `;
 const ValueBox = styled.div`
     width: 50%;
@@ -72,10 +86,19 @@ const LayerIconTools = styled.i`
     &:hover{
         scale: 1.2;
     }
+    //for tablet
+    @media screen and (max-width: 1050px) {
+        font-size: 28px;
+
+    }
 `;
 const ImgBox = styled.img`
     width: auto;
     height: 100%;
+    //for tablet
+    @media screen and (max-width: 1050px) {
+            font-size: 30px !important;
+    }
 `;
 const Paragraf = styled.p`
     width: 100%;
@@ -87,10 +110,38 @@ const Paragraf = styled.p`
     /* dynamic style */
     font-family: ${props=>props.$textFont} !important;
     color: ${props=>props.$textColor};
+    //for tablet
+        @media screen and (max-width: 1050px) {
+        font-size: 28px;
+
+    }
 `;
+const OpenerLayer = styled.button`
+    display: none;
+    grid-column: 1/3;
+    grid-row: 10/11;
+    background-color: #37BC9B;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    margin: 15px 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 18px;
+    & i{
+        font-size: 21px;
+        margin-left: 5px;
+    }
+    //for tablet
+    @media screen and (max-width: 1050px) {
+        display: block;
+    }
+`;
+
 const LayerEditor = () => {
     const context = useContext(Context);
     const layerElement = useRef();
+    const [showLayers, setshowLayers] = useState("none");
 
     const selectingItem = (item)=>{
         let newObject = [...context.itemArray];
@@ -156,9 +207,18 @@ const LayerEditor = () => {
         });
         context.setitemArray(newObject);
     }
+    const openLayersHandle = ()=>{
+        if(showLayers === "flex") {
+            setshowLayers("none");
+        }else if(showLayers === "none"){
+            setshowLayers("flex");
+        };
+    };
 
     return ( 
-    <LayerEditorContainer>
+    <>
+    <OpenerLayer onClick={openLayersHandle}><i class="bi bi-layers-fill"></i>لایـه هـا</OpenerLayer>
+    <LayerEditorContainer $showinglayer={showLayers}>
         {context.itemArray.map((item,index)=>(
             item.state === "text" ? (<Layer ref={layerElement} key={index} $LayerOrder={item.zIndex}
              $selectCheck={item.selected === false ? "0.3" : "2"}>
@@ -181,7 +241,8 @@ const LayerEditor = () => {
                 </BtnBox>
             </Layer>)
         ))}
-    </LayerEditorContainer> 
+    </LayerEditorContainer>
+    </> 
     );
 }
  
