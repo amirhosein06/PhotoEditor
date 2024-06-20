@@ -7,6 +7,8 @@ import CreateTools from "./createtools";
 import { useContext } from "react";
 import Context from "./context/context";
 import handlerList from "./editor handlers/handlersRepo";
+import download from "downloadjs";
+import html2canvas from "html2canvas";
 
 const Container = styled.div`
     width: 100%;
@@ -110,24 +112,34 @@ const AboutLink = styled.a`
 
 const MainPage = () => {
     const context = useContext(Context);
+    const previewDiv = document.getElementById("previewDiv");
     var tablet = window.matchMedia("(max-width: 1050px)");
     
     const createNewProject = ()=>{
-        // یادم باشه alert
-        context.setbackgroundData({
-            src: "",
-            filter: "",
-            backgroundColor: "",
-            width: tablet.matches ? "622" : "450",
-            height: tablet.matches ? "622" : "450",
-            mask: {
-              src: "",
-              opacity: "0.5"
-            }
-          });
-        context.setitemArray([]);
-        context.sethandleComponent(handlerList.AddPhoto);
-        context.settoolsSideStatus("background");
+        if (window.confirm("پـروژه قبـلـی حـذف مـی شـود,آیـا اطـمـینـان دارد؟") == true) {
+            context.setbackgroundData({
+                src: "",
+                filter: "",
+                backgroundColor: "",
+                width: tablet.matches ? "622" : "450",
+                height: tablet.matches ? "622" : "450",
+                mask: {
+                  src: "",
+                  opacity: "0.5"
+                }
+              });
+            context.setitemArray([]);
+            context.sethandleComponent(handlerList.AddPhoto);
+            context.settoolsSideStatus("background");
+        }else{
+            return;
+        }
+    };
+    const downloadProject = async ()=>{
+        const canvas = await html2canvas(previewDiv);
+        const dataURL = canvas.toDataURL('image/png');
+        download(dataURL, 'photo.png', 'image/png');
+        previewDiv.style.border = "1px solid #37BC9B";
     };
 
     return ( 
@@ -139,7 +151,17 @@ const MainPage = () => {
        <CreateTools />
        <NewProjectBtn onClick={createNewProject}>پـروژه جـدیـد <b>|</b> <i class="bi bi-plus-circle"></i></NewProjectBtn>
        <AboutLink href="/about">دربـاره مـن</AboutLink>
-       <DownloadBtn>ذخـیـره <b>|</b> <i class="bi bi-box-arrow-down"></i></DownloadBtn>
+       <DownloadBtn onClick={()=>{
+                let newObject = [...context.itemArray];
+                newObject.forEach(itemeach=>{
+                    itemeach.selected = false;
+                });
+                context.setitemArray(newObject);
+                previewDiv.style.border = "none";
+                setTimeout(() => {
+                    downloadProject();
+                }, 100);
+       }}>ذخـیـره <b>|</b> <i class="bi bi-box-arrow-down"></i></DownloadBtn>
     </Container> 
     );
 }

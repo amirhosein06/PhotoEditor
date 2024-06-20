@@ -56,7 +56,7 @@ const Preview = () => {
 
     return ( 
     <PreviewContainer>
-        <BsePreview $backPhoto={context.backgroundData.src} $backFilter={context.backgroundData.filter}
+        <BsePreview id="previewDiv" $backPhoto={context.backgroundData.src} $backFilter={context.backgroundData.filter}
         $backColor={context.backgroundData.backgroundColor} $backwidth={context.backgroundData.width}
         $backheight={context.backgroundData.height}
         >
