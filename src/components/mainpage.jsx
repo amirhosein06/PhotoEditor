@@ -44,6 +44,14 @@ const NewProjectBtn = styled.button`
         font-size: 25px;
         font-weight: 400;
     }
+    //for mobile
+    @media screen and (max-width: 550px) {
+        margin: 5px;
+        font-size: 15px;
+        & i{
+            font-size: 10px;
+        }
+    }
     & i{
         font-size: 22px;
         display: flex;
@@ -77,6 +85,14 @@ const DownloadBtn = styled.button`
        font-size: 25px;
        font-weight: 400;
     }
+    //for mobile
+    @media screen and (max-width: 550px) {
+        margin: 5px;
+        font-size: 15px;
+        & i{
+            font-size: 10px;
+        }
+    }
     & i{
         font-size: 22px;
         display: flex;
@@ -105,6 +121,10 @@ const AboutLink = styled.a`
        grid-row: 1/2;
        font-size: 16.5px;
     }
+    //for mobile
+    @media screen and (max-width: 550px) {
+        font-size: 11px;
+    }
     &:hover{
         text-decoration: underline;
     }
@@ -114,6 +134,7 @@ const MainPage = () => {
     const context = useContext(Context);
     const previewDiv = document.getElementById("previewDiv");
     var tablet = window.matchMedia("(max-width: 1050px)");
+    var mobile = window.matchMedia("(max-width: 550px)");
     
     const createNewProject = ()=>{
         if (window.confirm("پـروژه قبـلـی حـذف مـی شـود,آیـا اطـمـینـان دارد؟") == true) {
@@ -121,8 +142,8 @@ const MainPage = () => {
                 src: "",
                 filter: "",
                 backgroundColor: "",
-                width: tablet.matches ? "622" : "450",
-                height: tablet.matches ? "622" : "450",
+                width: mobile.matches ? window.innerWidth : tablet.matches ? "622" : "450",
+                height: mobile.matches ? window.innerWidth : tablet.matches ? "622" : "450",
                 mask: {
                   src: "",
                   opacity: "0.5"
@@ -135,11 +156,12 @@ const MainPage = () => {
             return;
         }
     };
-    const downloadProject = async ()=>{
+    const downloadProject = async (e)=>{
         const canvas = await html2canvas(previewDiv);
         const dataURL = canvas.toDataURL('image/png');
         download(dataURL, 'photo.png', 'image/png');
         previewDiv.style.border = "1px solid #37BC9B";
+        e.target.disabled = false;
     };
 
     return ( 
@@ -151,15 +173,16 @@ const MainPage = () => {
        <CreateTools />
        <NewProjectBtn onClick={createNewProject}>پـروژه جـدیـد <b>|</b> <i class="bi bi-plus-circle"></i></NewProjectBtn>
        <AboutLink href="/about">دربـاره مـن</AboutLink>
-       <DownloadBtn onClick={()=>{
+       <DownloadBtn onClick={(e)=>{
                 let newObject = [...context.itemArray];
                 newObject.forEach(itemeach=>{
                     itemeach.selected = false;
                 });
                 context.setitemArray(newObject);
                 previewDiv.style.border = "none";
+                e.target.disabled = true;
                 setTimeout(() => {
-                    downloadProject();
+                    downloadProject(e);
                 }, 100);
        }}>ذخـیـره <b>|</b> <i class="bi bi-box-arrow-down"></i></DownloadBtn>
     </Container> 

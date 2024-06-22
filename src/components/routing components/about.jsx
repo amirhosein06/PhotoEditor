@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const AboutContain = styled.div`
+  color: #25836b;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -17,9 +18,10 @@ const AboutContain = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 26px !important;
+    color: #25836b;
   };
   & a{
-    color: #000;
+    color: #25836b;
   };
 `;
 const LastLink = styled.a`

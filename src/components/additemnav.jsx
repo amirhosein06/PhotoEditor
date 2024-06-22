@@ -40,6 +40,11 @@ const Btns = styled.button`
        font-size: 1.5em;
        height: 90%;
     }
+    //for mobile
+    @media screen and (max-width: 550px) {
+        height: 70%;
+        font-size: 0.75em;
+    }
     &:active{
         scale: 0.9;
     }
@@ -53,12 +58,20 @@ const Icon = styled.i`
     @media screen and (max-width: 1050px) {
        font-size: 25px;
     }
+    //for mobile
+    @media screen and (max-width: 550px) {
+        font-size: 15px;
+    }
 `;
 const Icontext = styled(Icon)`
     font-size: 25px !important;
     //for tablet
     @media screen and (max-width: 1050px) {
         font-size: 33px !important;
+    }
+    //for mobile
+    @media screen and (max-width: 550px) {
+        font-size: 23px !important;
     }
 `;
 

@@ -53,12 +53,13 @@ function App() {
   const [handlerListState, sethandlerListState] = useState(handlerList);
   const [handleComponent, sethandleComponent] = useState(handlerList.AddPhoto);
   var tablet = window.matchMedia("(max-width: 1050px)");
+  var mobile = window.matchMedia("(max-width: 550px)");
   const [defultBack, setdefultBack] = useState({
     src: "",
     filter: "",
     backgroundColor: "",
-    width: tablet.matches ? "622" : "450",
-    height: tablet.matches ? "622" : "450",
+    width: mobile.matches ? window.innerWidth : tablet.matches ? "622" : "450",
+    height: mobile.matches ? window.innerWidth : tablet.matches ? "622" : "450",
     mask: {
       src: "",
       opacity: "0.5"

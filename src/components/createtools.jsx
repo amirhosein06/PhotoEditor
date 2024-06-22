@@ -87,6 +87,11 @@ export const ToolItem = styled.div`
         justify-content: center;
         overflow: hidden;
     }
+    //for mobile
+    @media screen and (max-width: 550px) {
+        font-size: 13px;
+        flex-direction: row;
+    }
 `;
 export const ToolsIcon = styled.div`
     display: flex;
@@ -96,6 +101,10 @@ export const ToolsIcon = styled.div`
     //for tablet
     @media screen and (max-width: 1050px) {
         font-size: 1.7em;
+    }
+    //for mobile
+    @media screen and (max-width: 550px) {
+        font-size: 11px;
     }
 `;
 

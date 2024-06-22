@@ -10,6 +10,15 @@ const EditorBox = styled.div`
         grid-column: 1/14;
         grid-row: 12/14;
     }
+    //for mobile
+    @media screen and (max-width: 550px) {
+        & *{
+            font-size: 0.7rem;
+        }
+        & i{
+            font-size: 3rem !important;
+        }
+    }
 `;
 
 const Editor = () => {

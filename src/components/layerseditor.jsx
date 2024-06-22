@@ -59,6 +59,10 @@ const Layer = styled.div`
          width: 97%;
          height: 80px;
     }
+    //for mobile
+    @media screen and (max-width: 550px) {
+        height: 50px;
+    }
 `;
 const ValueBox = styled.div`
     width: 50%;
@@ -91,6 +95,10 @@ const LayerIconTools = styled.i`
         font-size: 28px;
 
     }
+    //for mobile
+    @media screen and (max-width: 550px) {
+        font-size: 18px;
+    }
 `;
 const ImgBox = styled.img`
     width: auto;
@@ -98,6 +106,10 @@ const ImgBox = styled.img`
     //for tablet
     @media screen and (max-width: 1050px) {
             font-size: 30px !important;
+    }
+    //for mobile
+    @media screen and (max-width: 550px) {
+        font-size: 22px !important;
     }
 `;
 const Paragraf = styled.p`
@@ -111,9 +123,13 @@ const Paragraf = styled.p`
     font-family: ${props=>props.$textFont} !important;
     color: ${props=>props.$textColor};
     //for tablet
-        @media screen and (max-width: 1050px) {
+    @media screen and (max-width: 1050px) {
         font-size: 28px;
 
+    }
+    //for mobile
+    @media screen and (max-width: 550px) {
+        font-size: 16px;
     }
 `;
 const OpenerLayer = styled.button`
@@ -135,6 +151,14 @@ const OpenerLayer = styled.button`
     //for tablet
     @media screen and (max-width: 1050px) {
         display: block;
+    }
+    //for mobile
+    @media screen and (max-width: 550px) {
+        font-size: 10px;
+        margin: 10px 4px;
+        & i{
+        font-size: 13px;
+    }
     }
 `;
 
@@ -217,7 +241,7 @@ const LayerEditor = () => {
 
     return ( 
     <>
-    <OpenerLayer onClick={openLayersHandle}><i class="bi bi-layers-fill"></i>لایـه هـا</OpenerLayer>
+    <OpenerLayer onClick={openLayersHandle}><i className="bi bi-layers-fill"></i>لایـه هـا</OpenerLayer>
     <LayerEditorContainer $showinglayer={showLayers}>
         {context.itemArray.map((item,index)=>(
             item.state === "text" ? (<Layer ref={layerElement} key={index} $LayerOrder={item.zIndex}
