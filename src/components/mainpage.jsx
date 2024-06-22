@@ -183,7 +183,7 @@ const MainPage = () => {
                 e.target.disabled = true;
                 setTimeout(() => {
                     downloadProject(e);
-                }, 100);
+                }, 700);
        }}>ذخـیـره <b>|</b> <i class="bi bi-box-arrow-down"></i></DownloadBtn>
     </Container> 
     );

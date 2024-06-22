@@ -119,6 +119,7 @@ const Paragraf = styled.p`
     display: flex;
     align-items: center;
     padding-right: 5px;
+    text-shadow: 0px 0px 1px #000;
     /* dynamic style */
     font-family: ${props=>props.$textFont} !important;
     color: ${props=>props.$textColor};
